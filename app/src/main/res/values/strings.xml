@@ -1,0 +1,8 @@
+<resources>
+    <string name="cdt_app_name">M2YConductorServices</string>
+
+    <string name="cdt_vouchers_payment">Pagamento</string>
+    <string name="cdt_vouchers_bank_transfer">Transferência bancária</string>
+    <string name="cdt_vouchers_p2p_transfer">Transferência entre contas</string>
+    <string name="cdt_vouchers_recharge">Recarga</string>
+</resources>
