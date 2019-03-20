@@ -11,11 +11,11 @@ Para adicionar a dependência num projeto Android basta adicionar a seguinte lin
 ```
 dependencies {
     ...
-    implementation 'org.bitbucket.m2y:m2y-conductor-services-android:0.1.2'
+    implementation 'com.github.mobile2you:m2ycdt:0.1.0'
     ...
 }
 ```
-Versão mais recente estável: 0.1.2
+Versão mais recente estável: 0.1.0
 
 ## Repositories ##
 M2YCDTAccountRepository
