@@ -15,6 +15,11 @@ dependencies {
     ...
 }
 ```
+Para inicializar o ambiente é necessário chamar esses métodos (de preferência na BaseApplication):
+```
+M2YCDTPreferencesHelper.init(context)
+M2YCDTEnvironment.init(baseUrl, appHeader, isDebug, shouldReportCrash)
+```
 Versão mais recente estável: 0.1.0
 
 ## Repositories ##
