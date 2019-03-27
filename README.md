@@ -7,7 +7,24 @@ Esse repositório contém toda a parte remota da conductor comum às aplicaçõe
 
 ## Basic Instructions ##
 
-Para adicionar a dependência num projeto Android basta adicionar a seguinte linha no gradle:
+Para adicionar a dependência num projeto Android é necessário adicionar suporte ao jitpack no projeto, colocando a seguinte declaração no gradle do projeto:
+```
+allprojects {
+    repositories {
+        ...
+        maven {
+            url "https://jitpack.io"
+            credentials { username authToken }
+        }
+        ...
+    }
+}
+```
+A credencial tem que ser colocada no arquivo gradle.properties:
+```
+authToken=jp_c80pndqa0tlriv8mnpov4qom3n
+```
+E agora basta adicionar a seguinte linha no gradle do app:
 ```
 dependencies {
     ...
