@@ -7,15 +7,37 @@ Esse repositório contém toda a parte remota da conductor comum às aplicaçõe
 
 ## Basic Instructions ##
 
-Para adicionar a dependência num projeto Android basta adicionar a seguinte linha no gradle:
+Para adicionar a dependência num projeto Android é necessário adicionar suporte ao jitpack no projeto, colocando a seguinte declaração no gradle do projeto:
+```
+allprojects {
+    repositories {
+        ...
+        maven {
+            url "https://jitpack.io"
+            credentials { username authToken }
+        }
+        ...
+    }
+}
+```
+A credencial tem que ser colocada no arquivo gradle.properties:
+```
+authToken=jp_c80pndqa0tlriv8mnpov4qom3n
+```
+E agora basta adicionar a seguinte linha no gradle do app:
 ```
 dependencies {
     ...
-    implementation 'org.bitbucket.m2y:m2y-conductor-services-android:0.1.2'
+    implementation 'com.github.mobile2you:m2ycdt:0.1.0'
     ...
 }
 ```
-Versão mais recente estável: 0.1.2
+Para inicializar o ambiente é necessário chamar esses métodos (de preferência na BaseApplication):
+```
+M2YCDTPreferencesHelper.init(context)
+M2YCDTEnvironment.init(baseUrl, appHeader, isDebug, shouldReportCrash)
+```
+Versão mais recente estável: 0.1.0
 
 ## Repositories ##
 M2YCDTAccountRepository
