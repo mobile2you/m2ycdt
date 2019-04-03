@@ -28,7 +28,7 @@ E agora basta adicionar a seguinte linha no gradle do app:
 ```
 dependencies {
     ...
-    implementation 'com.github.mobile2you:m2ycdt:0.1.0'
+    implementation 'com.github.mobile2you:m2ycdt:0.1.1'
     ...
 }
 ```
@@ -37,7 +37,7 @@ Para inicializar o ambiente é necessário chamar esses métodos (de preferênci
 M2YCDTPreferencesHelper.init(context)
 M2YCDTEnvironment.init(baseUrl, appHeader, isDebug, shouldReportCrash)
 ```
-Versão mais recente estável: 0.1.0
+Versão mais recente estável: 0.1.1
 
 ## Repositories ##
 M2YCDTAccountRepository
