@@ -2,8 +2,8 @@ package br.com.m2yconductorservices.data.remote.models.request
 
 data class ExtractRequest(
         val id: String,
-        val beginDate: String?,
-        val endDate: String?,
+        val dataInicio: String?,
+        val dataFim: String?,
         val page: Int?,
-        val isCredit: Boolean?
+        val flagCredito: Boolean?
 )
