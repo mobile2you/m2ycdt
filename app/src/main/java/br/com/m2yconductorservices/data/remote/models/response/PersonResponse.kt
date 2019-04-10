@@ -5,6 +5,7 @@ class PersonResponse(
     val nome: String,
     val tipo: String,
     val cpf: String,
+    val cnpj: String,
     val dataNascimento: String,
     val sexo: String,
     val numeroIdentidade: String,
