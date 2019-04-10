@@ -7,13 +7,10 @@ data class RechargeRequest(
         var phoneNumber: String = "",
         var dealerCode: String = "",
         var dealerName: String = "",
-        var amount: Int = 0,
+        var amount: Float = 0f,
         var auth: String = "",
         var date: String = "",
         var orderId: String = "",
         var password: String = "",
         var cardId: String = ""
-) {
-    val amountFloat: Float
-        get() = (amount / 100f)
-}
+)
