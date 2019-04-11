@@ -50,4 +50,6 @@ interface M2YCDTAccountService {
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getTermsAndPolitics")
     fun getTermsAndPolitics() : Single<FirstAccessTerms>
 
+    @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getAvailableMonths")
+    fun getAvailableMonths(@Body availableMonthsRequest: AvailableMonthsRequest): Single<AvailableMonthsResponse>
 }

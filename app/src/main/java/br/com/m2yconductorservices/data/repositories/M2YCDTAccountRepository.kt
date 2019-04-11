@@ -99,4 +99,7 @@ object M2YCDTAccountRepository {
             .map { ExtractContainerModel(it.content.map { it.toModel() }, it.last == true) }
 
 
+    fun getAvailableMonths(accountId: String) = M2YCDTAccountRemoteDataSource.getAvailableMonths(accountId)
+
+
 }

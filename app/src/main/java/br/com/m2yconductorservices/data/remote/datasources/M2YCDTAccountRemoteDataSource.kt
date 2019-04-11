@@ -44,4 +44,6 @@ object M2YCDTAccountRemoteDataSource {
 
 
     fun getExtract(request: ExtractRequest) = service.getExtract(request)
+
+    fun getAvailableMonths(accountId: String) = service.getAvailableMonths(AvailableMonthsRequest(accountId))
 }
