@@ -117,7 +117,7 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
 fun RechargeRequest.toReceiptModel(): ReceiptModel {
     val recharge = ReceiptRechargeModel(phoneNumber = "($ddd) $phoneNumber", operator = dealerName, name = nickname, value =  amount.m2yCdtFormatCurrencyBRL())
 
-    return ReceiptModel(orderId, auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
+    return ReceiptModel(orderId, auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_TIME_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.RECHARGE, recharge = recharge)
 }
 
