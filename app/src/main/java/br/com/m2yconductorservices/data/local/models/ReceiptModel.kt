@@ -52,7 +52,9 @@ data class ReceiptPaymentModel(
 ) : Serializable
 
 data class ReceiptRechargeModel(
-        val numberData: String?,
+        val phoneNumber: String,
+        val operator: String,
+        val name: String?,
         val value: String?
 ) : Serializable
 
@@ -113,26 +115,25 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
 }
 
 fun RechargeRequest.toReceiptModel(): ReceiptModel {
-    val recharge = ReceiptRechargeModel("($ddd) $phoneNumber\n$dealerName", amount.m2yCdtFormatCurrencyBRL())
+    val recharge = ReceiptRechargeModel(phoneNumber = "($ddd) $phoneNumber", operator = dealerName, name = nickname, value =  amount.m2yCdtFormatCurrencyBRL())
 
-    return ReceiptModel("", auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
+    return ReceiptModel(orderId, auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.RECHARGE, recharge = recharge)
 }
 
 fun RechargeVoucherResponse.toReceiptModel(): ReceiptModel {
     val phone: String
 
-    if (phoneNumber.length == 9) {
+    phone = if (phoneNumber.length == 9) {
         val phoneDigit = phoneNumber.substring(0, 1)
         val firstForNumbers = phoneNumber.substring(1, 5)
         val lastForNumbers = phoneNumber.substring(5, 9)
-        phone = "$phoneDigit $firstForNumbers-$lastForNumbers"
+        "$phoneDigit $firstForNumbers-$lastForNumbers"
     } else {
-        phone = phoneNumber
+        phoneNumber
     }
 
-
-    val recharge = ReceiptRechargeModel("($ddd) $phone\n$dealerName", amountFloat.m2yCdtFormatCurrencyBRL())
+    val recharge = ReceiptRechargeModel(phoneNumber = "($ddd) $phone", operator = dealerName, name = nickname, value =  amountFloat.m2yCdtFormatCurrencyBRL())
 
     return ReceiptModel(orderId, transactionCode, rechargeDate.m2yCdtChangeDateFormat(M2YCDTConstants.RECHARGE_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.RECHARGE, recharge = recharge)

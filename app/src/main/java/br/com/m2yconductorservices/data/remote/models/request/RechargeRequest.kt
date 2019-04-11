@@ -12,5 +12,6 @@ data class RechargeRequest(
         var date: String = "",
         var orderId: String = "",
         var password: String = "",
-        var cardId: String = ""
+        var cardId: String = "",
+        var nickname: String?
 )
