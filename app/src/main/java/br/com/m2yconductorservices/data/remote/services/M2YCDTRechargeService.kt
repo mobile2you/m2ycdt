@@ -30,12 +30,10 @@ interface M2YCDTRechargeService {
     @POST("${M2YCDTNetworkConstants.CDT_RECHARGE_URL}getRecharges")
     fun getRecharges(@Body accountId: AccountIdRequest): Single<List<RechargeVoucherResponse>>
 
-    @POST("${M2YCDTNetworkConstants.CDT_RECHARGE_URL}getAmounts")
+    @POST("${M2YCDTNetworkConstants.CDT_RECHARGE_URL}createRechargeRequest")
     fun getAmounts(@Body request: RechargeRequest): Single<PhoneAmountResponse>
 
     @POST("${M2YCDTNetworkConstants.CDT_RECHARGE_URL}createRechargeRequest")
-    fun recharge(@Body request: RechargeRequest): Single<Any>
+    fun recharge(@Body request: RechargeRequest): Single<PhoneAmountResponse>
 
-    @POST("${M2YCDTNetworkConstants.CDT_RECHARGE_URL}confirmRecharge")
-    fun confirmCdtRecharge(@Body request: RechargeRequest): Single<Any>
 }

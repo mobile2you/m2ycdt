@@ -9,7 +9,7 @@ class RechargeVoucherResponse(
         var dealerName: String = "",
         var amount: String,
         val rechargeDate: String,
-        val nickname: String?) {
+        val nickname: String = "") {
 
     val amountFloat: Float
         get() = amount.toFloat()
