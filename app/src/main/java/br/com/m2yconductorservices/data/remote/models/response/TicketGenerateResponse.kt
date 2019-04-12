@@ -12,7 +12,9 @@ data class TicketGenerateResponse(
         var value: Float?,
         var expiration_data: String?,
         var created_at: String?,
-        var accountId: String?
+        var accountId: String?,
+        var barcode: String?,
+        var isPaid: Boolean?
 )
 
 fun TicketGenerateResponse.toVoucher(): VoucherItemModel {

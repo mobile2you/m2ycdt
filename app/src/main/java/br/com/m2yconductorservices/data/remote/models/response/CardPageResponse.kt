@@ -40,7 +40,8 @@ data class CardResponse(
         val cartaoVirtual: Int?,
         val idStatusCartao: Int?,
         var statusCartao: String?,
-        val codigoDesbloqueio: String?
+        val codigoDesbloqueio: String?,
+        val isFirstAccess: Boolean?
 ) : Serializable
 
 fun CardPageResponse.toModel() = BalanceModel(saldo)
