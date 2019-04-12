@@ -13,8 +13,8 @@ data class TicketGenerateResponse(
         var expiration_data: String?,
         var created_at: String?,
         var accountId: String?,
-        var barcode: String?,
-        var isPaid: Boolean?
+        var bar_code: String?,
+        var paid: Boolean?
 )
 
 fun TicketGenerateResponse.toVoucher(): VoucherItemModel {
