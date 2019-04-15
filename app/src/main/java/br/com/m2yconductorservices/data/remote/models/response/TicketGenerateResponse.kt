@@ -15,7 +15,8 @@ data class TicketGenerateResponse(
         var accountId: String?,
         var bar_code: String?,
         var paid: Boolean?,
-        var pdf_id: String?
+        var pdf_id: String?,
+        var account: String?
 )
 
 fun TicketGenerateResponse.toVoucher(): VoucherItemModel {
