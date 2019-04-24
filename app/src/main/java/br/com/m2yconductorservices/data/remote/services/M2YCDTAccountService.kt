@@ -12,7 +12,6 @@ import retrofit2.http.Part
 
 interface M2YCDTAccountService {
 
-
     @POST("${M2YCDTNetworkConstants.CDT_ACCOUNT_URL}getTransactions")
     fun getExtract(@Body request: ExtractRequest): Single<PaginatedResponse<ExtractResponse>>
 
@@ -49,5 +48,8 @@ interface M2YCDTAccountService {
 
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getTermsAndPolitics")
     fun getTermsAndPolitics() : Single<FirstAccessTerms>
+
+    @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}logout")
+    fun logout() : Single<Any>
 
 }

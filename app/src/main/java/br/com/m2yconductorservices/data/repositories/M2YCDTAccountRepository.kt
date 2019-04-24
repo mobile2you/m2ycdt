@@ -83,6 +83,7 @@ object M2YCDTAccountRepository {
 
     fun registerToken(token: String) = M2YCDTAccountRemoteDataSource.registerToken(token)
 
+    @Deprecated("Para fazer o logout usando a API chamar o logoutFromApi")
     fun logout() {
         M2YCDTPreferencesHelper.apply {
             basicAuth = null
@@ -98,5 +99,17 @@ object M2YCDTAccountRepository {
         M2YCDTAccountRemoteDataSource.getExtract(request)
             .map { ExtractContainerModel(it.content.map { it.toModel() }, it.last == true) }
 
+    fun logoutFromApi(): Single<Any> {
+        return M2YCDTAccountRemoteDataSource.logout().onErrorResumeNext {
+            Single.just(Any())
+        }.doFinally {
+            M2YCDTPreferencesHelper.apply {
+                basicAuth = null
+                sessionCookie = null
+                userFingerprint = false
+            }
+            M2YCDTPersistUserInformation.resetUser()
+        }
+    }
 
 }

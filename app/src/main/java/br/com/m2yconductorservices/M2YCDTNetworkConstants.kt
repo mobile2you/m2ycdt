@@ -26,6 +26,7 @@ object M2YCDTNetworkConstants {
     val BASE_URL = M2YCDTEnvironment.baseUrl
     const val LOGIN_URL = "login/"
     const val ACCOUNT_URL = "account/"
+    const val PERSON_URL = "person/"
     const val TRANSFER_URL = "transfers/"
     const val REGISTRATION_URL = "registration/"
     const val RECHARGE_URL = "recharge/"
