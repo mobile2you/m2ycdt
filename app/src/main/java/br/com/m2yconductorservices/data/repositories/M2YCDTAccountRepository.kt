@@ -112,4 +112,7 @@ object M2YCDTAccountRepository {
         }
     }
 
+    fun getAvailableMonths(accountId: String) = M2YCDTAccountRemoteDataSource.getAvailableMonths(accountId)
+
+
 }

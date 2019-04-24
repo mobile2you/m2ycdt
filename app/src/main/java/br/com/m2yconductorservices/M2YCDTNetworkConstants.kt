@@ -49,4 +49,6 @@ object M2YCDTNetworkConstants {
     const val CDT_BANK_SLIP_URL = "${CDT_BASE_URL}bank_slip/"
 
     const val CDT_AUTH_URL = ""
+
+    const val PERSON_URL = "person/"
 }

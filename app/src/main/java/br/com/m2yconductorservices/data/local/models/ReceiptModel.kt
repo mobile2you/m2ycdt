@@ -15,7 +15,8 @@ data class ReceiptModel(
         val type: ReceiptType,
         val transfer: ReceiptTransferModel? = null,
         val payment: ReceiptPaymentModel? = null,
-        val recharge: ReceiptRechargeModel? = null
+        val recharge: ReceiptRechargeModel? = null,
+        val description: String? = null
 ) : Serializable
 
 data class ReceiptTransferModel(
@@ -52,13 +53,16 @@ data class ReceiptPaymentModel(
 ) : Serializable
 
 data class ReceiptRechargeModel(
-        val numberData: String?,
+        val phoneNumber: String,
+        val operator: String,
+        val name: String?,
         val value: String?
 ) : Serializable
 
 fun TransferResellerResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(id?.toString(), transactionCode, transactionDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
-            ReceiptType.TRANSFER, transfer = ReceiptTransferModel("Conta $destinationAccount", amount, null, null, null, null, null, TransferType.RESSELER))
+            ReceiptType.TRANSFER, transfer = ReceiptTransferModel("Conta $destinationAccount", amount, null, null,
+            null, null, null, TransferType.RESSELER), description = description)
 }
 
 
@@ -66,7 +70,8 @@ fun TransferBankResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(idOriginAccount.toString(), this.transactionCode, date.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.TRANSFER,
             transfer = ReceiptTransferModel(idOriginAccount.toInt().toString(),
-                    value, beneficiary.name, beneficiary.docIdCpfCnpjEinSSN.toString(), bankName, beneficiary.agency.toString(), "${beneficiary.account}-${beneficiary.accountDigit}", TransferType.BANK))
+                    value, beneficiary.name, beneficiary.docIdCpfCnpjEinSSN.toString(), bankName, beneficiary.agency.toString(),
+                "${beneficiary.account}-${beneficiary.accountDigit}", TransferType.BANK))
 }
 
 fun VoucherBankResponse.toReceiptModel(): ReceiptModel {
@@ -81,6 +86,7 @@ fun Transferp2pResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(id?.toString(), this.transactionCode,
             date?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.TRANSFER,
+            description = description,
             transfer = ReceiptTransferModel(originalAccount?.toInt().toString(),
                     amount,
                     jsonObject?.name,
@@ -109,30 +115,29 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
 
     return ReceiptModel(id?.toString(), "",
             this.dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
-            ReceiptType.PAYMENT, payment = payment)
+            ReceiptType.PAYMENT, payment = payment, description = description)
 }
 
 fun RechargeRequest.toReceiptModel(): ReceiptModel {
-    val recharge = ReceiptRechargeModel("($ddd) $phoneNumber\n$dealerName", amount.m2yCdtFormatCurrencyBRL())
+    val recharge = ReceiptRechargeModel(phoneNumber = "($ddd) $phoneNumber", operator = dealerName, name = nickname, value =  amount.m2yCdtFormatCurrencyBRL())
 
-    return ReceiptModel("", auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
+    return ReceiptModel(orderId, auth, date.m2yCdtChangeDateFormat(M2YCDTConstants.COMMON_DATE_TIME_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.RECHARGE, recharge = recharge)
 }
 
 fun RechargeVoucherResponse.toReceiptModel(): ReceiptModel {
     val phone: String
 
-    if (phoneNumber.length == 9) {
+    phone = if (phoneNumber.length == 9) {
         val phoneDigit = phoneNumber.substring(0, 1)
         val firstForNumbers = phoneNumber.substring(1, 5)
         val lastForNumbers = phoneNumber.substring(5, 9)
-        phone = "$phoneDigit $firstForNumbers-$lastForNumbers"
+        "$phoneDigit $firstForNumbers-$lastForNumbers"
     } else {
-        phone = phoneNumber
+        phoneNumber
     }
 
-
-    val recharge = ReceiptRechargeModel("($ddd) $phone\n$dealerName", amountFloat.m2yCdtFormatCurrencyBRL())
+    val recharge = ReceiptRechargeModel(phoneNumber = "($ddd) $phone", operator = dealerName, name = nickname, value =  amountFloat.m2yCdtFormatCurrencyBRL())
 
     return ReceiptModel(orderId, transactionCode, rechargeDate.m2yCdtChangeDateFormat(M2YCDTConstants.RECHARGE_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.RECHARGE, recharge = recharge)

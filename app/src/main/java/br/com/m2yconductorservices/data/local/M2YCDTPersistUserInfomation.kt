@@ -126,8 +126,8 @@ object M2YCDTPersistUserInformation {
     }
 
     fun urls(): LoginUrlResponse =  persistedUser?.urls ?: LoginUrlResponse("", "", "")
-    fun urls(newUrls: LoginUrlResponse): LoginUrlResponse {
-        persistedUser?.urls = newUrls
+    fun urls(newUrls: LoginUrlResponse?): LoginUrlResponse {
+        newUrls?.let { persistedUser?.urls = it }
         return urls()
     }
 

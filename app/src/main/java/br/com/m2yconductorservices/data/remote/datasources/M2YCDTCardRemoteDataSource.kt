@@ -3,6 +3,7 @@ package br.com.m2yconductorservices.data.remote.datasources
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
 import br.com.m2yconductorservices.data.remote.M2YCDTServiceGenerator
 import br.com.m2yconductorservices.data.remote.interceptors.M2YCDTInterceptor
+import br.com.m2yconductorservices.data.remote.models.request.ActivateCardRequest
 import br.com.m2yconductorservices.data.remote.models.request.BlockAndUnBlockRequest
 import br.com.m2yconductorservices.data.remote.models.request.UpdatePassCardRequest
 import br.com.m2yconductorservices.data.remote.models.request.VerifyPasswordRequest
@@ -20,4 +21,6 @@ object M2YCDTCardRemoteDataSource {
     fun validateCard(request: VerifyPasswordRequest) = service.validateCard(request)
 
     fun updateCardPassword(request: UpdatePassCardRequest) = service.updateCardPassword(request)
+
+    fun activateCard(request: ActivateCardRequest) = service.activateCard(request)
 }

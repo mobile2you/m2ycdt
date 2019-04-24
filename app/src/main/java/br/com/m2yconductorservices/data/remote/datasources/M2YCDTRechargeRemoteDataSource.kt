@@ -19,9 +19,6 @@ object M2YCDTRechargeRemoteDataSource {
     fun getAmounts(request: RechargeRequest) = service.getAmounts(request)
 
     fun recharge(request: RechargeRequest) = service.recharge(request)
-        .flatMap { service.confirmRecharge(request) }.doOnError {
-            it.message
-        }
 
     fun getRecharges(accountId: AccountIdRequest) = service.getRecharges(accountId)
 

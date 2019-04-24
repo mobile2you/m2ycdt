@@ -52,4 +52,7 @@ interface M2YCDTAccountService {
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}logout")
     fun logout() : Single<Any>
 
+    @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getAvailableMonths")
+    fun getAvailableMonths(@Body availableMonthsRequest: AvailableMonthsRequest): Single<AvailableMonthsResponse>
+
 }
