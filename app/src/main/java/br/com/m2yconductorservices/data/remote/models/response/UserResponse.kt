@@ -18,7 +18,7 @@ data class UserResponse(
         var phone: String?,
         var blocked: Boolean,
         var birth_date: String,
-        var urls: LoginUrlResponse,
+        var urls: LoginUrlResponse?,
         var email: String?,
         var token: String
 )
