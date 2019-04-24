@@ -15,7 +15,8 @@ data class ReceiptModel(
         val type: ReceiptType,
         val transfer: ReceiptTransferModel? = null,
         val payment: ReceiptPaymentModel? = null,
-        val recharge: ReceiptRechargeModel? = null
+        val recharge: ReceiptRechargeModel? = null,
+        val description: String? = null
 ) : Serializable
 
 data class ReceiptTransferModel(
@@ -60,7 +61,8 @@ data class ReceiptRechargeModel(
 
 fun TransferResellerResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(id?.toString(), transactionCode, transactionDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
-            ReceiptType.TRANSFER, transfer = ReceiptTransferModel("Conta $destinationAccount", amount, null, null, null, null, null, TransferType.RESSELER))
+            ReceiptType.TRANSFER, transfer = ReceiptTransferModel("Conta $destinationAccount", amount, null, null,
+            null, null, null, TransferType.RESSELER), description = description)
 }
 
 
@@ -68,7 +70,8 @@ fun TransferBankResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(idOriginAccount.toString(), this.transactionCode, date.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.TRANSFER,
             transfer = ReceiptTransferModel(idOriginAccount.toInt().toString(),
-                    value, beneficiary.name, beneficiary.docIdCpfCnpjEinSSN.toString(), bankName, beneficiary.agency.toString(), "${beneficiary.account}-${beneficiary.accountDigit}", TransferType.BANK))
+                    value, beneficiary.name, beneficiary.docIdCpfCnpjEinSSN.toString(), bankName, beneficiary.agency.toString(),
+                "${beneficiary.account}-${beneficiary.accountDigit}", TransferType.BANK))
 }
 
 fun VoucherBankResponse.toReceiptModel(): ReceiptModel {
@@ -83,6 +86,7 @@ fun Transferp2pResponse.toReceiptModel(): ReceiptModel {
     return ReceiptModel(id?.toString(), this.transactionCode,
             date?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
             ReceiptType.TRANSFER,
+            description = description,
             transfer = ReceiptTransferModel(originalAccount?.toInt().toString(),
                     amount,
                     jsonObject?.name,
@@ -111,7 +115,7 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
 
     return ReceiptModel(id?.toString(), "",
             this.dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
-            ReceiptType.PAYMENT, payment = payment)
+            ReceiptType.PAYMENT, payment = payment, description = description)
 }
 
 fun RechargeRequest.toReceiptModel(): ReceiptModel {
