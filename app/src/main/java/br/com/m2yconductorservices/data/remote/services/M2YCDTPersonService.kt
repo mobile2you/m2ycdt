@@ -15,9 +15,6 @@ interface M2YCDTPersonService {
     @POST("${M2YCDTNetworkConstants.CDT_PERSON_URL}findPerson")
     fun findPerson(@Body accountId: IdRequest?): Single<GetPeopleResponse>
 
-    @POST("${M2YCDTNetworkConstants.PERSON_URL}getPerson")
-    fun getPerson(@Body request: AccountIdIntRequest?): Single<GetPeopleResponse>
-
     @POST("${M2YCDTNetworkConstants.CDT_PERSON_URL}getPeople")
     fun getPeople(@Body peopleId: PeopleIdRequest?): Single<GetPeopleResponse>
 }

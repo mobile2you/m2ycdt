@@ -47,10 +47,10 @@ interface M2YCDTAccountService {
     fun registerToken(@Body registerTokenRequest: RegisterTokenRequest): Single<Any>
 
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getTermsAndPolitics")
-    fun getTermsAndPolitics() : Single<FirstAccessTerms>
+    fun getTermsAndPolitics(): Single<FirstAccessTerms>
 
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}logout")
-    fun logout() : Single<Any>
+    fun logout(): Single<Any>
 
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getAvailableMonths")
     fun getAvailableMonths(@Body availableMonthsRequest: AvailableMonthsRequest): Single<AvailableMonthsResponse>
