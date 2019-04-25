@@ -112,7 +112,7 @@ fun PaymentModel.toTicketModel(accountId: String): TicketModel {
 }
 
 fun PaymentModel.toReceiptModel(): ReceiptModel {
-    return ReceiptModel("", "", jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_FORMAT), type = ReceiptType.PAYMENT, payment = ReceiptPaymentModel(barcode, jsonObject?.name ?: description,
+    return ReceiptModel("", "", jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_TIME_FORMAT), type = ReceiptType.PAYMENT, payment = ReceiptPaymentModel(barcode, jsonObject?.name ?: description,
             jsonObject?.expiration, jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_FORMAT), jsonObject?.discount, jsonObject?.fine,
             jsonObject?.charges, jsonObject?.interest, jsonObject?.cpfOrCNPJ, jsonObject?.paymentDate,
             jsonObject?.amount, M2YCDTPersistUserInformation.accountId()))
