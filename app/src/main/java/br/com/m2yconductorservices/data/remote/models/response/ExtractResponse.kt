@@ -11,7 +11,8 @@ data class ExtractResponse(val description: String?,
                            val flagCredito: Int?,
                            val codigoMCC: Int?,
                            val idTransferencia: String?,
-                           val value: Float?)
+                           val value: Float?,
+                           val refund_status: String?)
 
 class ExtractContainerModel(val extractList: List<ExtractModel>,
                             val isLastPage: Boolean)
