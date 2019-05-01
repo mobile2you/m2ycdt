@@ -3,10 +3,12 @@ package br.com.m2yconductorservices.data.local.models
 import br.com.m2yconductorservices.R
 
 data class ExtractModel(
+        val id: String,
         val date: String,
         val title: String,
         val amount: Float,
-        val codigoMCC: Int?
+        val codigoMCC: Int?,
+        val refund_status: String?
 ) {
     fun getMccDrawable(): Int? {
         return when (codigoMCC) {
