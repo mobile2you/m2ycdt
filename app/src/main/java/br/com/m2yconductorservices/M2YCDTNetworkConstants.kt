@@ -27,7 +27,7 @@ object M2YCDTNetworkConstants {
     const val LOGIN_URL = "login/"
     const val ACCOUNT_URL = "account/"
     const val PERSON_URL = "person/"
-    const val TRANSFER_URL = "transfers/"
+    const val TRANSFER_URL = "transfer/"
     const val REGISTRATION_URL = "registration/"
     const val RECHARGE_URL = "recharge/"
     const val TRANSFER_P2P_URL = "p2p/"
