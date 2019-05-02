@@ -7,5 +7,7 @@ data class FavoriteTransferRequest(
         var digit: String,
         var name: String,
         var cpf: String,
-        var nickname: String?
+        var nickname: String,
+        var accountType: String,
+        var cpfOrCnpj: String
 )

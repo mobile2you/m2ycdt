@@ -60,10 +60,6 @@ dependencies {
     //RX
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
-    // ENCRYPTION
-    implementation 'com.scottyab:aescrypt:0.0.1'
-
-
 }
 
 apply plugin: 'kotlin-android-extensions'

@@ -49,4 +49,8 @@ object M2YCDTNetworkConstants {
     const val CDT_BANK_SLIP_URL = "${CDT_BASE_URL}bank_slip/"
 
     const val CDT_AUTH_URL = ""
+
+    // KEYS
+    const val ENCRYPTION_KEY = "e2kS14JoJCPJMlxJwg3swSOMGICbLSX7"
+    const val ENCRYPTION_IV = "02OUlFZgdq6QkFr2"
 }
