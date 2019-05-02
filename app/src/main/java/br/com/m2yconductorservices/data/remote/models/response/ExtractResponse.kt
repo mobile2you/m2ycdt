@@ -11,7 +11,8 @@ data class ExtractResponse(val description: String?,
                            val flagCredito: Int?,
                            val codigoMCC: Int?,
                            val idTransferencia: String?,
-                           val value: Float?)
+                           val value: Float?,
+                           val refund_status: String?)
 
 class ExtractContainerModel(val extractList: List<ExtractModel>,
                             val isLastPage: Boolean)
@@ -26,6 +27,7 @@ fun ExtractResponse.toModel(): ExtractModel {
         title = description
     }
 
-    return ExtractModel(date = this.date ?: "",
-            title = title?.m2yCdtNormalizeSpaces() ?: "", amount = (value ?: 0f), codigoMCC = codigoMCC)
+    return ExtractModel(id = idTransferencia ?: "id", date = this.date ?: "",
+            title = title?.m2yCdtNormalizeSpaces() ?: "", amount = (value ?: 0f), codigoMCC = codigoMCC,
+            refund_status = refund_status)
 }
