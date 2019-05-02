@@ -8,6 +8,7 @@ data class TransferResponse(
     var name: String?,
     var cpf: String?,
     var nickname: String?,
+    var accountType: String?,
     var digit: String?,
     var cpfOrCnpj: String?
 )
