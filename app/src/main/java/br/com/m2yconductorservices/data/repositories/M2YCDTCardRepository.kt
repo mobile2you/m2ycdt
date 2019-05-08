@@ -1,10 +1,7 @@
 package br.com.m2yconductorservices.data.repositories
 
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTCardRemoteDataSource
-import br.com.m2yconductorservices.data.remote.models.request.ActivateCardRequest
-import br.com.m2yconductorservices.data.remote.models.request.BlockAndUnBlockRequest
-import br.com.m2yconductorservices.data.remote.models.request.UpdatePassCardRequest
-import br.com.m2yconductorservices.data.remote.models.request.VerifyPasswordRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 
 object M2YCDTCardRepository {
 
@@ -13,6 +10,8 @@ object M2YCDTCardRepository {
     fun unlockCard(card: BlockAndUnBlockRequest) = M2YCDTCardRemoteDataSource.unlockCard(card)
 
     fun blockCard(card: BlockAndUnBlockRequest) = M2YCDTCardRemoteDataSource.blockCard(card)
+
+    fun cancelCard(card: CardIdRequest) = M2YCDTCardRemoteDataSource.cancelCard(card)
 
     fun updateCardPassword(request: UpdatePassCardRequest) = M2YCDTCardRemoteDataSource.updateCardPassword(request)
 

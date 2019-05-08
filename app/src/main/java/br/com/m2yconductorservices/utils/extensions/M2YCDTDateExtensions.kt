@@ -1,5 +1,6 @@
 package br.com.m2yconductorservices.utils.extensions
 
+import android.util.Log
 import br.com.m2yconductorservices.M2YCDTConstants
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,7 +28,7 @@ fun String.m2yCdtChangeDateFormat(currentDateFormat: String, newDateFormat: Stri
 
         newDf.format(date)
     } catch (e: Exception) {
-        e.printStackTrace()
+        Log.e("PARSE_DATE", e.message)
         this
     }
 }
@@ -40,7 +41,7 @@ fun String.m2yCdtDateFromString(dateFormat: String, locale: Locale = Locale(M2YC
         val sdf = SimpleDateFormat(dateFormat, locale)
         sdf.parse(date)
     } catch (e: Exception) {
-        e.printStackTrace()
+        Log.e("PARSE_DATE", e.message)
         null
     }
 }
