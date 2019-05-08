@@ -22,6 +22,8 @@ object M2YCDTAccountRemoteDataSource {
 
     fun getCards(accountId: IdRequest?) = service.getCards(accountId)
 
+    fun createVirtualCard(accountId: AccountIdIntRequest) = service.createVirtualCard(accountId)
+
     fun sendCode() = service.sendCode()
 
     fun updatePhone(newPhone: PhoneRequest) = service.updatePhone(newPhone)

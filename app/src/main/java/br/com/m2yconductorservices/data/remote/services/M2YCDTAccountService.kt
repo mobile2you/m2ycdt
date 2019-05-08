@@ -27,6 +27,9 @@ interface M2YCDTAccountService {
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getCards")
     fun getCards(@Body accountId: IdRequest?): Single<CardPageResponse>
 
+    @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}createVirtualCard")
+    fun createVirtualCard(@Body accountId: AccountIdIntRequest): Single<CardResponse>
+
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}updatePassword")
     fun updatePassword(@Body request: UpdatePasswordRequest): Single<Any>
 

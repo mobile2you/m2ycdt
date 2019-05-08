@@ -4,10 +4,7 @@ import br.com.m2yconductorservices.data.local.M2YCDTPersistUserInformation
 import br.com.m2yconductorservices.data.local.M2YCDTPreferencesHelper
 import br.com.m2yconductorservices.data.local.models.BalanceModel
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTAccountRemoteDataSource
-import br.com.m2yconductorservices.data.remote.models.request.ExtractRequest
-import br.com.m2yconductorservices.data.remote.models.request.IdRequest
-import br.com.m2yconductorservices.data.remote.models.request.PassRequest
-import br.com.m2yconductorservices.data.remote.models.request.PhoneRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 import br.com.m2yconductorservices.data.remote.models.response.ExtractContainerModel
 import br.com.m2yconductorservices.data.remote.models.response.UserResponse
 import br.com.m2yconductorservices.data.remote.models.response.toModel
@@ -28,10 +25,15 @@ object M2YCDTAccountRepository {
         it.content?.firstOrNull()?.id?.let { firstAccountId -> M2YCDTPersistUserInformation.accountId(firstAccountId) }
     }
 
+    @Deprecated("Should not be used anymore, harder to do maintenance", replaceWith = ReplaceWith("getAccount"))
     fun findAccount(accountId: IdRequest?) = M2YCDTAccountRemoteDataSource.findAccount(accountId)
+    fun getAccount(accountId: IdRequest) = M2YCDTAccountRemoteDataSource.findAccount(accountId).map { it.toAccountModel() }
 
+    @Deprecated("Should not be used anymore, harder to do maintenance", replaceWith = ReplaceWith("getCardList"))
     fun getCards(accountId: IdRequest?) = M2YCDTAccountRemoteDataSource.getCards(accountId)
+    fun getCardList(accountId: IdRequest) = M2YCDTAccountRemoteDataSource.getCards(accountId).map { it.cards?.map { it.toModel() } ?: listOf() }
 
+    fun createVirtualCard(accountId: AccountIdIntRequest) = M2YCDTAccountRemoteDataSource.createVirtualCard(accountId).map { it.toModel() }
 
     var lastBalance = BalanceModel(null)
     val balanceObservable: Observable<BalanceModel> =
