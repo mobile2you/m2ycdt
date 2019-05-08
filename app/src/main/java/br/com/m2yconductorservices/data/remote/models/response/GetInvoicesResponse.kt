@@ -5,10 +5,10 @@ class GetInvoicesResponse (
 )
 
 class GetInvoicesContent(
-    val id: Int,
-    val idConta: Int,
-    val nossoNumero: String,
-    val dataVencimento: String,
-    val valorBoleto: Float,
-    val idTipoBoleto: Int
+    val id: Int?,
+    val idConta: Int?,
+    val nossoNumero: String?,
+    val dataVencimento: String?,
+    val valorBoleto: Float?,
+    val idTipoBoleto: Int?
 )
