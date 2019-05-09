@@ -33,6 +33,7 @@ object M2YCDTNetworkConstants {
     const val TRANSFER_P2P_URL = "p2p/"
     const val BANKS_URL = "banks/"
     const val CARD_URL = "card/"
+    const val INVOICES = "invoices/"
 
     const val CDT_BASE_URL = "cdt/"
     const val CDT_RATE_URL = "${CDT_BASE_URL}rate/"
@@ -48,7 +49,6 @@ object M2YCDTNetworkConstants {
     const val CDT_PAYMENT_URL = "${CDT_BASE_URL}payment/"
     const val CDT_BILLET_URL = "${CDT_BASE_URL}billet/"
     const val CDT_BANK_SLIP_URL = "${CDT_BASE_URL}bank_slip/"
-    const val CDT_INVOICES = "${CDT_BASE_URL}invoices/"
 
     const val CDT_AUTH_URL = ""
 
