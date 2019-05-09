@@ -38,7 +38,7 @@ fun Transferp2pResponse.toVoucher(): VoucherItemModel {
     return VoucherItemModel(id = id?.toString() ?: "",
             nameRes = VoucherTypeItem.P2P_TRANSFER.nameRes,
             date = date?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT, isUTC = false)
-                    ?: "", subject = "Conta ${destinationAccount?.toInt()}", amount = amount ?: 0f)
+                    ?: "", subject = "${if (name != null) name + "\n" else ""}Conta ${destinationAccount?.toInt()}", amount = amount ?: 0f)
 }
 
 fun VoucherBankResponse.toVoucher(): VoucherItemModel {
