@@ -89,7 +89,7 @@ fun Transferp2pResponse.toReceiptModel(): ReceiptModel {
             description = description,
             transfer = ReceiptTransferModel(originalAccount?.toInt().toString(),
                     amount,
-                    jsonObject?.name,
+                    name ?: jsonObject?.name,
                     jsonObject?.cpfOrCNPJ.toString(),
                     jsonObject?.bank,
                     null,
