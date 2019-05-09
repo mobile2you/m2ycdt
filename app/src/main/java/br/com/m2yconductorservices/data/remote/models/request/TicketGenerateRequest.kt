@@ -5,5 +5,6 @@ data class TicketGenerateRequest(
         var value: Float,
         var expirationDate: String,
         var name: String? = null,
-        var cpf: String? = null
+        var cpf: String? = null,
+        var type: Int? = null
 )
