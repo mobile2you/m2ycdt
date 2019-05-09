@@ -7,6 +7,6 @@ import retrofit2.http.POST
 
 interface M2YCDTInvoicesService {
 
-    @POST("${M2YCDTNetworkConstants.CDT_INVOICES}getInvoices")
+    @POST("${M2YCDTNetworkConstants.INVOICES}getInvoices")
     fun getInvoices(): Single<GetInvoicesResponse>
 }
