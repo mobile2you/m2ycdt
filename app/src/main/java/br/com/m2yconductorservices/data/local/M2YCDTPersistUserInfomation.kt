@@ -200,6 +200,12 @@ object M2YCDTPersistUserInformation {
         return cdtTokenSystemTime()
     }
 
+    fun hasCards() = persistedUser?.has_cards == true
+    fun hasCards(hasCards: Boolean): Boolean {
+        persistedUser?.has_cards = hasCards
+        return persistedUser?.has_cards == true
+    }
+
     fun isCdtTokenInvalid(): Boolean {
         return (SystemClock.elapsedRealtime() - cdtTokenSystemTime()) > cdtExpiresIn()
     }

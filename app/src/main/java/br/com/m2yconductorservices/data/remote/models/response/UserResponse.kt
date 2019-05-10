@@ -20,7 +20,8 @@ data class UserResponse(
         var birth_date: String,
         var urls: LoginUrlResponse?,
         var email: String?,
-        var token: String
+        var token: String,
+        var has_cards: Boolean
 )
 
 data class LoginUrlResponse(
