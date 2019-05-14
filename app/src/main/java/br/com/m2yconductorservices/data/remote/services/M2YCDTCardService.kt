@@ -2,7 +2,7 @@ package br.com.m2yconductorservices.data.remote.services
 
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
 import br.com.m2yconductorservices.data.remote.models.request.*
-import br.com.m2yconductorservices.data.remote.models.response.TicketGenerateResponse
+import br.com.m2yconductorservices.data.remote.models.response.TicketGeneratedResponse
 import br.com.m2yconductorservices.data.remote.models.response.ValidateCardPasswordResponse
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -29,5 +29,5 @@ interface M2YCDTCardService {
     fun activateCard(@Body activateCardRequest: ActivateCardRequest): Single<Any>
 
     @POST("${M2YCDTNetworkConstants.CARD_URL}requestCard")
-    fun requestCard(): Single<TicketGenerateResponse>
+    fun requestCard(): Single<TicketGeneratedResponse>
 }
