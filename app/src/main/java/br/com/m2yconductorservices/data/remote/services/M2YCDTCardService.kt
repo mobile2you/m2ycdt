@@ -29,5 +29,5 @@ interface M2YCDTCardService {
     fun activateCard(@Body activateCardRequest: ActivateCardRequest): Single<Any>
 
     @POST("${M2YCDTNetworkConstants.CARD_URL}requestCard")
-    fun requestCard(): Single<TicketGeneratedResponse>
+    fun requestCard(@Body request: RequestCardRequest): Single<TicketGeneratedResponse>
 }

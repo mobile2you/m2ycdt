@@ -17,5 +17,5 @@ object M2YCDTCardRepository {
 
     fun activateCard(request: ActivateCardRequest) = M2YCDTCardRemoteDataSource.activateCard(request)
 
-    fun requestCard() = M2YCDTCardRemoteDataSource.requestCard()
+    fun requestCard(request: RequestCardRequest) = M2YCDTCardRemoteDataSource.requestCard(request)
 }
