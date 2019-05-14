@@ -16,4 +16,6 @@ object M2YCDTCardRepository {
     fun updateCardPassword(request: UpdatePassCardRequest) = M2YCDTCardRemoteDataSource.updateCardPassword(request)
 
     fun activateCard(request: ActivateCardRequest) = M2YCDTCardRemoteDataSource.activateCard(request)
+
+    fun requestCard() = M2YCDTCardRemoteDataSource.requestCard()
 }

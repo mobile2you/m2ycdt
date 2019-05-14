@@ -21,4 +21,6 @@ object M2YCDTCardRemoteDataSource {
     fun updateCardPassword(request: UpdatePassCardRequest) = service.updateCardPassword(request)
 
     fun activateCard(request: ActivateCardRequest) = service.activateCard(request)
+
+    fun requestCard() = service.requestCard()
 }
