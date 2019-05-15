@@ -13,7 +13,7 @@ object M2YCDTBankSlipRepository {
     fun getPdf(ticketId: IdIntRequest?, storageDir: File, fileName: String) = M2YCDTBankSlipRemoteDataSource.getPDF(ticketId)
     .map {
         val file = File.createTempFile(
-            "CWL-$ticketId", /* prefix */
+            fileName, /* prefix */
             ".pdf", /* suffix */
             storageDir      /* directory */
         )
