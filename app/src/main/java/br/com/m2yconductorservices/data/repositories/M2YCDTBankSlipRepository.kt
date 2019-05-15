@@ -7,9 +7,8 @@ import java.io.File
 
 object M2YCDTBankSlipRepository {
 
-    fun getPdf(ticketId: IdIntRequest?, storageDir: File){
-        getPdf(ticketId, storageDir, ticketId?.id.toString())
-    }
+    fun getPdf(ticketId: IdIntRequest?, storageDir: File) = getPdf(ticketId, storageDir, ticketId?.id.toString())
+
 
     fun getPdf(ticketId: IdIntRequest?, storageDir: File, fileName: String) = M2YCDTBankSlipRemoteDataSource.getPDF(ticketId)
     .map {
