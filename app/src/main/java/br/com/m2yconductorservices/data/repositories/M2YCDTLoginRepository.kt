@@ -35,6 +35,8 @@ object M2YCDTLoginRepository {
 
     fun forgotPassword(cpf: CpfRequest) = M2YCDTLoginRemoteDataSource.forgotPassword(cpf)
 
+    fun resetPassword(request: EmailRequest) = M2YCDTLoginRemoteDataSource.resetPassword(request)
+
     fun forgotPasswordCheckCode(request: ForgotPassRequest) = M2YCDTLoginRemoteDataSource.forgotPasswordCheckCode(request)
 
     fun forgotPasswordResendCode(cpf: CpfRequest) = M2YCDTLoginRemoteDataSource.forgotPasswordResendCode(cpf)

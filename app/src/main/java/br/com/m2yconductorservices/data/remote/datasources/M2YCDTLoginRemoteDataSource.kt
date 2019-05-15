@@ -13,6 +13,8 @@ object M2YCDTLoginRemoteDataSource {
 
     fun forgotPassword(cpf: CpfRequest) = service.forgotPassword(cpf)
 
+    fun resetPassword(request: EmailRequest) = service.resetPassword(request)
+
     fun checkCpf(cpf: CpfRequest?) = service.checkCpf(cpf)
 
     fun register(request: LoginSignUpRequest) = service.register(request)

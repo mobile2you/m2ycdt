@@ -19,6 +19,9 @@ interface M2YCDTLoginService {
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}forgotPass")
     fun forgotPassword(@Body cpf: CpfRequest): Single<ForgotPasswordResponse>
 
+    @POST("${M2YCDTNetworkConstants.LOGIN_URL}resetPassword")
+    fun resetPassword(@Body request: EmailRequest): Single<Any>
+
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}checkCode")
     fun forgotPasswordCheckCode(@Body cpf: ForgotPassRequest): Single<Unit>
 
