@@ -22,7 +22,7 @@ allprojects {
 ```
 A credencial tem que ser colocada no arquivo gradle.properties:
 ```
-authToken=jp_c80pndqa0tlriv8mnpov4qom3n
+authToken=jp_2bfkj8gscb8bpi2jbdbnvltunnl
 ```
 E agora basta adicionar a seguinte linha no gradle do app:
 ```
