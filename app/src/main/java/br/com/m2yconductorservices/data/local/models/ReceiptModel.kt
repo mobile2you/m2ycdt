@@ -24,8 +24,7 @@ enum class TransferType(val type: Int) {
     BANK(0),
     P2P(1),
     RESSELER(2),
-    RECHARGE(3),
-    BILHETE(4)
+    RECHARGE(3)
 }
 
 data class ReceiptTransferModel(

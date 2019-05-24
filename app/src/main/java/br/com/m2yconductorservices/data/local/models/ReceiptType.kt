@@ -5,5 +5,6 @@ import java.io.Serializable
 enum class ReceiptType : Serializable {
     TRANSFER,
     PAYMENT,
-    RECHARGE
+    RECHARGE,
+    BILHETE
 }
