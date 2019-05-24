@@ -16,7 +16,7 @@ data class ReceiptModel(
     val transfer: ReceiptTransferModel? = null,
     val payment: ReceiptPaymentModel? = null,
     val recharge: ReceiptRechargeModel? = null,
-    val bilhete: ReceiptRechargeModel? = null,
+    val bilhete: ReceiptBilheteModel? = null,
     val description: String? = null
 ) : Serializable
 
@@ -62,7 +62,7 @@ data class ReceiptRechargeModel(
 
 data class ReceiptBilheteModel(
     val number: String?,
-    val value: String?
+    val value: Float?
 ) : Serializable
 
 fun TransferResellerResponse.toReceiptModel(): ReceiptModel {
