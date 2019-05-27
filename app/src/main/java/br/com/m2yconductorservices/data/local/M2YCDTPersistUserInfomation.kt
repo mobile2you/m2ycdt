@@ -1,10 +1,7 @@
 package br.com.m2yconductorservices.data.local
 
 import android.os.SystemClock
-import br.com.m2yconductorservices.data.remote.models.response.AccountPageResponse
-import br.com.m2yconductorservices.data.remote.models.response.LoginUrlResponse
-import br.com.m2yconductorservices.data.remote.models.response.TokenCDTResponse
-import br.com.m2yconductorservices.data.remote.models.response.UserResponse
+import br.com.m2yconductorservices.data.remote.models.response.*
 import br.com.m2yconductorservices.utils.M2YCDTBase64Helper
 
 object M2YCDTPersistUserInformation {
@@ -16,6 +13,7 @@ object M2YCDTPersistUserInformation {
     private var userAccounts: AccountPageResponse? = null
     private var password: String = ""
     private var firstTime: Boolean = false
+    private var listAccounts: List<AccountResponse>? = null
 
 
     fun resetUser() {
@@ -30,6 +28,11 @@ object M2YCDTPersistUserInformation {
         this.userLogin = user.cpf
         M2YCDTPreferencesHelper.userCpf = user.cpf
     }
+
+    fun setAccounts(listAccounts: List<AccountResponse>){
+        this.listAccounts = listAccounts
+    }
+    fun getAccounts(): List<AccountResponse> = listAccounts ?: emptyList()
 
     fun id(): String = persistedUser?.id ?: ""
     fun cpf(): String = persistedUser?.cpf ?: M2YCDTPreferencesHelper.userCpf ?: ""
