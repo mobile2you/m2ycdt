@@ -15,7 +15,6 @@ object M2YCDTPersistUserInformation {
     private var firstTime: Boolean = false
     private var listAccounts: List<AccountResponse>? = null
 
-
     fun resetUser() {
         persistedUser = null
         cdtTokenResponse = TokenCDTResponse("", 0, "")
@@ -29,9 +28,10 @@ object M2YCDTPersistUserInformation {
         M2YCDTPreferencesHelper.userCpf = user.cpf
     }
 
-    fun setAccounts(listAccounts: List<AccountResponse>){
+    fun setAccounts(listAccounts: List<AccountResponse>) {
         this.listAccounts = listAccounts
     }
+
     fun getAccounts(): List<AccountResponse> = listAccounts ?: emptyList()
 
     fun id(): String = persistedUser?.id ?: ""
@@ -45,7 +45,7 @@ object M2YCDTPersistUserInformation {
 
     fun name(): String = persistedUser?.name ?: ""
     fun name(newName: String): String {
-        persistedUser?.name  = newName
+        persistedUser?.name = newName
         return name()
     }
 
@@ -57,7 +57,7 @@ object M2YCDTPersistUserInformation {
 
     fun picture(): String = persistedUser?.picture ?: ""
     fun picture(newPicture: String): String {
-        persistedUser?.picture  = newPicture
+        persistedUser?.picture = newPicture
         return picture()
     }
 
@@ -70,13 +70,13 @@ object M2YCDTPersistUserInformation {
 
     fun cardId(): String = persistedUser?.card_id ?: ""
     fun cardId(newCardId: String): String {
-        persistedUser?.card_id  = newCardId
+        persistedUser?.card_id = newCardId
         return cardId()
     }
 
     fun saudation(): String = persistedUser?.saudation ?: ""
     fun saudation(newSaudation: String): String {
-        persistedUser?.saudation  = newSaudation
+        persistedUser?.saudation = newSaudation
         return saudation()
     }
 
@@ -92,43 +92,43 @@ object M2YCDTPersistUserInformation {
         return activated()
     }
 
-    fun document(): String =  persistedUser?.document ?: ""
+    fun document(): String = persistedUser?.document ?: ""
     fun document(newDocument: String): String {
         persistedUser?.document = newDocument
         return document()
     }
 
-    fun step(): String =  persistedUser?.step ?: ""
+    fun step(): String = persistedUser?.step ?: ""
     fun step(newStep: String): String {
         persistedUser?.step = newStep
         return step()
     }
 
-    fun re(): String =  persistedUser?.re ?: ""
+    fun re(): String = persistedUser?.re ?: ""
     fun re(newRe: String): String {
         persistedUser?.re = newRe
         return re()
     }
 
-    fun phone(): String =  persistedUser?.phone ?: ""
+    fun phone(): String = persistedUser?.phone ?: ""
     fun phone(newPhone: String): String {
         persistedUser?.phone = newPhone
         return re()
     }
 
-    fun blocked(): Boolean =  persistedUser?.blocked ?: false
+    fun blocked(): Boolean = persistedUser?.blocked ?: false
     fun blocked(newBlocked: Boolean): Boolean {
         persistedUser?.blocked = newBlocked
         return blocked()
     }
 
-    fun birthDate(): String =  persistedUser?.birth_date ?: ""
+    fun birthDate(): String = persistedUser?.birth_date ?: ""
     fun birthDate(newBirthDate: Boolean): String {
         persistedUser?.blocked = newBirthDate
         return birthDate()
     }
 
-    fun urls(): LoginUrlResponse =  persistedUser?.urls ?: LoginUrlResponse("", "", "")
+    fun urls(): LoginUrlResponse = persistedUser?.urls ?: LoginUrlResponse("", "", "")
     fun urls(newUrls: LoginUrlResponse?): LoginUrlResponse {
         newUrls?.let { persistedUser?.urls = it }
         return urls()
@@ -152,7 +152,7 @@ object M2YCDTPersistUserInformation {
         return userAccountString()
     }
 
-    fun userLogin(): String = if(!userLogin.isNullOrEmpty()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
+    fun userLogin(): String = if (!userLogin.isNullOrEmpty()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
     fun userLogin(newUserLogin: String): String {
         userLogin = newUserLogin
         return userLogin()
@@ -166,7 +166,9 @@ object M2YCDTPersistUserInformation {
         return newUserAccounts
     }
 
-    fun password(): String = if(!password.isEmpty()) password else M2YCDTBase64Helper.descrypt(M2YCDTPreferencesHelper.userPassword ?: "")
+    fun password(): String =
+        if (!password.isEmpty()) password else M2YCDTBase64Helper.descrypt(M2YCDTPreferencesHelper.userPassword ?: "")
+
     fun password(newPassword: String): String {
         password = newPassword
         M2YCDTPreferencesHelper.userPassword = newPassword
@@ -213,5 +215,16 @@ object M2YCDTPersistUserInformation {
         return (SystemClock.elapsedRealtime() - cdtTokenSystemTime()) > cdtExpiresIn()
     }
 
+    fun clear() {
+        persistedUser = null
+        cdtTokenResponse = TokenCDTResponse("", -1, "")
+        cdtTokenSystemTime = -1
+        userAccountString = null
+        userLogin = null
+        userAccounts = null
+        password = ""
+        firstTime = false
+        listAccounts = null
+    }
 
 }

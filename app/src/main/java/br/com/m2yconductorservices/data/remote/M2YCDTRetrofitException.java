@@ -15,15 +15,19 @@ public class M2YCDTRetrofitException extends RuntimeException {
 //            message = response.code() + " " + response.message();
 //        else
             message = url;
-        return new M2YCDTRetrofitException(message, url, response, null);
+        return new M2YCDTRetrofitException(message, url, response.raw().code(), response, null);
     }
 
     static M2YCDTRetrofitException networkError(IOException exception) {
-        return new M2YCDTRetrofitException(exception.getMessage(), null, null, exception);
+        return new M2YCDTRetrofitException(exception.getMessage(), null, -1, null, exception);
     }
 
     static M2YCDTRetrofitException unexpectedError(Throwable exception) {
-        return new M2YCDTRetrofitException(exception.getMessage(), null, null, exception);
+        return new M2YCDTRetrofitException(exception.getMessage(), null, -1, null, exception);
+    }
+
+    static M2YCDTRetrofitException protocolError(Throwable exception) {
+        return new M2YCDTRetrofitException(exception.getMessage(), null, 401, null, exception);
     }
 
     /**
@@ -47,11 +51,13 @@ public class M2YCDTRetrofitException extends RuntimeException {
 
     private final String url;
     private final Response response;
+    private final int errorCode;
 
-    private M2YCDTRetrofitException(String message, String url, Response response, Throwable exception) {
+    private M2YCDTRetrofitException(String message, String url, int code, Response response, Throwable exception) {
         super(message, exception);
         this.url = url;
         this.response = response;
+        this.errorCode = code;
     }
 
     /**
@@ -66,6 +72,10 @@ public class M2YCDTRetrofitException extends RuntimeException {
      */
     public Response getResponse() {
         return response;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
     }
 
 }

@@ -21,7 +21,7 @@ fun <T> Single<T>.m2yCdtSingleSubscribe(onSuccess: ((t: T) -> Unit)? = null, onE
                     }
 
                     override fun onError(e: Throwable) {
-                        if ((e as? M2YCDTRetrofitException)?.response?.raw()?.code() != 401) {
+                        if ((e as? M2YCDTRetrofitException)?.errorCode != 401) {
                             onError?.let { it(e) }
                         }
                     }

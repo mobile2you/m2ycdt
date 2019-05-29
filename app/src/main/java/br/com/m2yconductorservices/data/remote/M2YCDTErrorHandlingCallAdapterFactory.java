@@ -1,6 +1,10 @@
 package br.com.m2yconductorservices.data.remote;
 
+import android.os.Handler;
+import android.os.Looper;
 import br.com.m2yconductorservices.data.M2YCDTEnvironment;
+import br.com.m2yconductorservices.data.local.M2YCDTPersistUserInformation;
+import br.com.m2yconductorservices.data.local.M2YCDTPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
@@ -9,6 +13,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -102,6 +107,16 @@ public class M2YCDTErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
                     // Timeout error
                     throwable = new SocketTimeoutException(ERROR_TIMEOUT_ERROR);
                     returnableThrowable = M2YCDTRetrofitException.networkError((IOException) throwable);
+                } else if (throwable instanceof ProtocolException) {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            M2YCDTPersistUserInformation.INSTANCE.clear();
+                            M2YCDTPreferencesHelper.INSTANCE.clearSharedPref();
+                            M2YCDTUserUnauthorizedBus.INSTANCE.setEvent(ERROR_PARSE_PRODUCTION);
+                        }
+                    });
+                    returnableThrowable = M2YCDTRetrofitException.protocolError(throwable);
                 }
                 return returnableThrowable;
             } else if (throwable instanceof JsonParseException) {
