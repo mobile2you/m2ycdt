@@ -1,5 +1,7 @@
 package br.com.m2yconductorservices.data.remote.models.request
 
+import java.io.Serializable
+
 data class RechargeRequest(
         var accountId: Int,
         var amountKey: Int = 0,
@@ -14,4 +16,5 @@ data class RechargeRequest(
         var password: String = "",
         var cardId: String = "",
         var nickname: String = ""
-)
+
+) : Serializable
