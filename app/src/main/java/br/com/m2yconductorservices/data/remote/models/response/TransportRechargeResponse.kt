@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class TransportRechargeResponse(
     var productCode: Int?,
-    var orderNumber: Int?,
+    var orderNumber: String?,
     var status: String?,
     var value: Float?,
     var amount: Float?,
