@@ -3,6 +3,7 @@ package br.com.m2yconductorservices.data.remote.services
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
 import br.com.m2yconductorservices.data.remote.models.request.TransportFavored
 import br.com.m2yconductorservices.data.remote.models.request.TransportRequest
+import br.com.m2yconductorservices.data.remote.models.response.TransportRechargeResponse
 import br.com.m2yconductorservices.data.remote.models.response.TransportResponse
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -14,7 +15,7 @@ interface M2YCDTTransportCards {
     fun getProducts(@Body request: TransportRequest) : Single<List<TransportResponse>>
 
     @POST("${M2YCDTNetworkConstants.BANKS_TRANSPORTS}recharge")
-    fun recharge(@Body request: TransportRequest) : Single<List<TransportResponse>>
+    fun recharge(@Body request: TransportRequest) : Single<TransportRechargeResponse>
 
     @POST("${M2YCDTNetworkConstants.BANKS_TRANSPORTS}getSptransCards")
     fun getSptransCards() : Single<List<TransportFavored>>
