@@ -32,6 +32,7 @@ object M2YCDTNetworkConstants {
     const val RECHARGE_URL = "recharge/"
     const val TRANSFER_P2P_URL = "p2p/"
     const val BANKS_URL = "banks/"
+    const val BANKS_TRANSPORTS = "transportcard/"
     const val CARD_URL = "card/"
     const val INVOICES = "invoices/"
 
