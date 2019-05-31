@@ -37,6 +37,7 @@ data class PaymentInfoNPCResponse(
         val IdentificationNumber: String?,
         val DueDate: String?,
         val BillValue: Float?,
+        val TotalAmountToCharge: Float?,
         val TaxBreakValue: Int?,
         val PaymentLimitDate: String?,
         val OpeningPaymentschedule: String?,

@@ -158,7 +158,7 @@ fun BarcodeValidationResponse.toPaymentModel(): PaymentModel {
                     DataReturn.Result?.Message?.Message, null, null)
         DataReturn?.Result?.BillPaymentTypeId == BillPaymentType.NPC.serverId ->
             return PaymentModel(Message?.MessageId ?: -1,
-                    DataReturn.Result?.PaymentInfoNPC?.BillValue,
+                    DataReturn.Result?.PaymentInfoNPC?.TotalAmountToCharge,
                     DataReturn.Result?.PaymentInfoNPC?.ComputedBillValues?.TotalAmountToCharge,
                     DataReturn.Result?.PaymentInfoNPC?.DigitavelLine,
                     DataReturn.Result?.ValidateBarCode?.Description,
