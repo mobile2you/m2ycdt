@@ -10,7 +10,8 @@ data class TransferResponse(
     var nickname: String?,
     var accountType: String?,
     var digit: String?,
-    var cpfOrCnpj: String?
+    var cpfOrCnpj: String?,
+    var color: String?
 )
 
 data class BankResponse(

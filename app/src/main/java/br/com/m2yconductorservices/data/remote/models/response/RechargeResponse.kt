@@ -8,5 +8,6 @@ data class RechargeResponse(
         var mobile_carrier: String?,
         var nickname: String?,
         var dealer: String?,
-        var ddd: String?
+        var ddd: String?,
+        var color: String?
 ) : Serializable
