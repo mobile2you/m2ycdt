@@ -2,10 +2,7 @@ package br.com.m2yconductorservices.data.remote.services
 
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
 import br.com.m2yconductorservices.data.remote.models.request.*
-import br.com.m2yconductorservices.data.remote.models.response.FirstAccessResponse
-import br.com.m2yconductorservices.data.remote.models.response.ForgotPasswordResponse
-import br.com.m2yconductorservices.data.remote.models.response.UserResponse
-import br.com.m2yconductorservices.data.remote.models.response.ValidateAccountResponse
+import br.com.m2yconductorservices.data.remote.models.response.*
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -42,4 +39,11 @@ interface M2YCDTLoginService {
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}validateAccount")
     fun validateAccount(@Body request: ValidateAccountRequest): Single<ValidateAccountResponse>
+
+    @POST("${M2YCDTNetworkConstants.LOGIN_URL}checkCdtUser")
+    fun checkCdtUser(@Body cpf: CpfRequest?): Single<CheckCdtUserResponse>
+
+    @POST("${M2YCDTNetworkConstants.LOGIN_URL}associateCard")
+    fun associateCard(@Body request: AssociateCardRequest?): Single<AssociateCardResponse>
+
 }

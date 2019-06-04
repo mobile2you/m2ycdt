@@ -17,6 +17,10 @@ object M2YCDTLoginRemoteDataSource {
 
     fun checkCpf(cpf: CpfRequest?) = service.checkCpf(cpf)
 
+    fun checkCdtUser(cpf: CpfRequest?) = service.checkCdtUser(cpf)
+
+    fun associateCard(request: AssociateCardRequest) = service.associateCard(request)
+
     fun register(request: LoginSignUpRequest) = service.register(request)
 
     fun checkCode(code: CheckCodeRequest?) = service.checkCode(code)
