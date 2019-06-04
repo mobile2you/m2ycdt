@@ -9,6 +9,7 @@ data class AssociateCardRequest (
 
 data class  CreatePersonRequest (
     var cpf: String,
+    var birth_date: String?,
     var name: String?,
     var zip: String = "",
     var number: String = "",
