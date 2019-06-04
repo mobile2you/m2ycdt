@@ -2,9 +2,23 @@ package br.com.m2yconductorservices.data.remote.models.request
 
 data class AssociateCardRequest (
     var cpf: String?,
-    var cardNumber: String?,
+    var cardNumber: String?
+
+)
+
+
+data class  CreatePersonRequest (
+    var cpf: String,
     var name: String?,
-    var address: AddressModel?
+    var zip: String = "",
+    var number: String = "",
+    var street: String = "",
+    var complement: String = "",
+    var city: String = "",
+    var state: String = "",
+    var neighborhood: String = "",
+    var ref: String = "",
+    var country: String = ""
 )
 
 data class AddressModel(

@@ -21,6 +21,8 @@ object M2YCDTLoginRemoteDataSource {
 
     fun associateCard(request: AssociateCardRequest) = service.associateCard(request)
 
+    fun createPerson(request: CreatePersonRequest) = service.createPerson(request)
+
     fun register(request: LoginSignUpRequest) = service.register(request)
 
     fun checkCode(code: CheckCodeRequest?) = service.checkCode(code)
