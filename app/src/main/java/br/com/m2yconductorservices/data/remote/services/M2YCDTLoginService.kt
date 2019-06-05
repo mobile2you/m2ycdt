@@ -44,7 +44,7 @@ interface M2YCDTLoginService {
     fun checkCdtUser(@Body cpf: CpfRequest?): Single<CheckCdtUserResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}associateCard")
-    fun associateCard(@Body request: AssociateCardRequest?): Single<AssociateCardResponse>
+    fun associateCard(@Body request: AssociateCardRequest?): Single<LoginResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}createPerson")
     fun createPerson(@Body request: CreatePersonRequest?): Single<AssociateCardResponse>
