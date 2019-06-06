@@ -13,6 +13,8 @@ object M2YCDTCardRepository {
 
     fun cancelCard(card: CardIdRequest) = M2YCDTCardRemoteDataSource.cancelCard(card)
 
+    fun cdtCancelCard(card: CardIdRequest) = M2YCDTCardRemoteDataSource.cdtCancelCard(card)
+
     fun updateCardPassword(request: UpdatePassCardRequest) = M2YCDTCardRemoteDataSource.updateCardPassword(request)
 
     fun activateCard(request: ActivateCardRequest) = M2YCDTCardRemoteDataSource.activateCard(request)

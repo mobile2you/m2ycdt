@@ -16,6 +16,8 @@ object M2YCDTCardRemoteDataSource {
 
     fun cancelCard(card: CardIdRequest) = service.cancelCard(card)
 
+    fun cdtCancelCard(card: CardIdRequest) = service.cdtCancelCard(card)
+
     fun validateCard(request: VerifyPasswordRequest) = service.validateCard(request)
 
     fun updateCardPassword(request: UpdatePassCardRequest) = service.updateCardPassword(request)

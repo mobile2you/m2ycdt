@@ -25,6 +25,9 @@ interface M2YCDTCardService {
     @POST("${M2YCDTNetworkConstants.CARD_URL}cancelCard")
     fun cancelCard(@Body card: CardIdRequest): Single<Any>
 
+    @POST("${M2YCDTNetworkConstants.CDT_CARD_URL}cancelCard")
+    fun cdtCancelCard(@Body card: CardIdRequest): Single<Any>
+
     @POST("${M2YCDTNetworkConstants.CARD_URL}activateCard")
     fun activateCard(@Body activateCardRequest: ActivateCardRequest): Single<Any>
 
