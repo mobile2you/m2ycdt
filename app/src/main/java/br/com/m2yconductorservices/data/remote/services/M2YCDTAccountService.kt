@@ -46,6 +46,9 @@ interface M2YCDTAccountService {
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}sendCode")
     fun sendCode(): Single<Any>
 
+    @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}getAvailableMonths")
+    fun getAvailableMonths(): Single<MonthResponse>
+
     @POST("${M2YCDTNetworkConstants.ACCOUNT_URL}registerToken")
     fun registerToken(@Body registerTokenRequest: RegisterTokenRequest): Single<Any>
 

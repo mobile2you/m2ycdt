@@ -26,6 +26,8 @@ object M2YCDTAccountRemoteDataSource {
 
     fun sendCode() = service.sendCode()
 
+    fun getAvailableMonths() = service.getAvailableMonths()
+
     fun updatePhone(newPhone: PhoneRequest) = service.updatePhone(newPhone)
 
     fun updatePassword(newPassword: String, confirmPassword: String) = service.updatePassword(UpdatePasswordRequest(newPassword, confirmPassword))

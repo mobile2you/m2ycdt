@@ -85,6 +85,8 @@ object M2YCDTAccountRepository {
             M2YCDTPersistUserInformation.phone(phone)
         }
 
+    fun getAvailableMonths() = M2YCDTAccountRemoteDataSource.getAvailableMonths()
+
     fun updatePhoto(file: File): Single<UserResponse> {
         val filePart = MultipartBody.Part.createFormData(
             "picture", file.name,
