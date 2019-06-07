@@ -5,4 +5,5 @@
     <string name="cdt_vouchers_bank_transfer">Transferência bancária</string>
     <string name="cdt_vouchers_p2p_transfer">Transferência entre contas</string>
     <string name="cdt_vouchers_recharge">Recarga</string>
+    <string name="cdt_vouchers_recharge_unique">SPTrans Recarga</string>
 </resources>

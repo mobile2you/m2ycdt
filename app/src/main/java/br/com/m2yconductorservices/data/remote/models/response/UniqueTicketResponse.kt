@@ -1,9 +1,7 @@
 package br.com.m2yconductorservices.data.remote.models.response
 
 import br.com.m2yconductorservices.M2YCDTConstants
-import br.com.m2yconductorservices.data.local.models.ReceiptBilheteModel
-import br.com.m2yconductorservices.data.local.models.ReceiptModel
-import br.com.m2yconductorservices.data.local.models.ReceiptType
+import br.com.m2yconductorservices.data.local.models.*
 import br.com.m2yconductorservices.utils.extensions.m2yCdtChangeDateFormat
 import java.io.Serializable
 
@@ -35,4 +33,11 @@ fun UniqueRecharge.toReceiptModel(): ReceiptModel {
         ReceiptType.BILHETE,
         bilhete = ReceiptBilheteModel(cardNumber.toString(), value)
     )
+}
+
+
+fun UniqueRecharge.toVoucher(): VoucherItemModel {
+    return VoucherItemModel(id = id?.toString() ?: "", nameRes = VoucherTypeItem.UNIQUE_TICKET.nameRes,
+        date = date?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT).toString(),
+        subject = "", amount = this.value ?: 0f)
 }
