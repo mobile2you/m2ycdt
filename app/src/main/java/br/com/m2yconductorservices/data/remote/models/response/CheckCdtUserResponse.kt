@@ -5,7 +5,8 @@ import java.io.Serializable
 data class CheckCdtUserResponse (
     var hasPersonId: Boolean,
     var hasAccountId: Boolean,
-    var hasCardId: Boolean
+    var hasCardId: Boolean,
+    var hasPendingCards: Boolean
 
 ) : Serializable
 

@@ -39,5 +39,5 @@ fun UniqueRecharge.toReceiptModel(): ReceiptModel {
 fun UniqueRecharge.toVoucher(): VoucherItemModel {
     return VoucherItemModel(id = id?.toString() ?: "", nameRes = VoucherTypeItem.UNIQUE_TICKET.nameRes,
         date = date?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT).toString(),
-        subject = "", amount = this.value ?: 0f)
+        subject = cardNumber.toString(), amount = this.value ?: 0f)
 }
