@@ -5,7 +5,7 @@ import java.io.Serializable
 data class TransportFavored (
     var id: String?,
     var name: String?,
-    var cardNumber: Int?,
+    var cardNumber: Long?,
     var color: String?
 
 ) : Serializable
