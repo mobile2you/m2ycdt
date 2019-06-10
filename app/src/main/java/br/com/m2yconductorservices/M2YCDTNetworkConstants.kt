@@ -35,6 +35,8 @@ object M2YCDTNetworkConstants {
     const val BANKS_TRANSPORTS = "transportcard/"
     const val CARD_URL = "card/"
     const val INVOICES = "invoices/"
+    const val PAYMENT = "payment/"
+
 
     const val CDT_BASE_URL = "cdt/"
     const val CDT_RATE_URL = "${CDT_BASE_URL}rate/"

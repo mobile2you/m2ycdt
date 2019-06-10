@@ -16,6 +16,8 @@ object M2YCDTPaymentRepository {
 
     fun getPayment(accountId: AccountIdIntRequest) = M2YCDTPaymentRemoteDataSource.getPayment(accountId)
 
+    fun getAllPayment(accountId: AccountIdIntRequest) = M2YCDTPaymentRemoteDataSource.getAllPayment(accountId)
+
     fun pay(paymentModel: PaymentModel): Single<TicketPaymentResponse> {
         val paymentRequest = paymentModel.toPaymentRequest(M2YCDTAccountRepository.accountId.toLong(),
                 M2YCDTPersistUserInformation.name())

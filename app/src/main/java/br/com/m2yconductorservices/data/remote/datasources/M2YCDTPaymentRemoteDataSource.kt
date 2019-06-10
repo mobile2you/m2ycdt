@@ -15,6 +15,8 @@ object M2YCDTPaymentRemoteDataSource {
 
     fun getPayment(accountId: AccountIdIntRequest) = service.getPayment(accountId)
 
+    fun getAllPayment(accountId: AccountIdIntRequest) = service.getAllPayment(accountId)
+
     fun pay(request: TicketPaymentRequest) = service.pay(request)
 
     fun validate(barcode : ValidateBarCodeRequest?) = service.validate(barcode)

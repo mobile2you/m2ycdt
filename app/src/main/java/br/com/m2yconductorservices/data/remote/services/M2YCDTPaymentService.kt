@@ -21,4 +21,7 @@ interface M2YCDTPaymentService {
 
     @POST("${M2YCDTNetworkConstants.CDT_PAYMENT_URL}validate")
     fun validate(@Body barcode: ValidateBarCodeRequest?) : Single<BarcodeValidationResponse>
+
+    @POST("${M2YCDTNetworkConstants.PAYMENT}getPayment")
+    fun getAllPayment(@Body accountId: AccountIdIntRequest): Single<List<PaymentTicketResponse>>
 }
