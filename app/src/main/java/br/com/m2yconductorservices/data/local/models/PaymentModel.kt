@@ -3,6 +3,7 @@ package br.com.m2yconductorservices.data.local.models
 import br.com.m2yconductorservices.M2YCDTConstants
 import br.com.m2yconductorservices.data.local.M2YCDTPersistUserInformation
 import br.com.m2yconductorservices.data.remote.models.response.BarcodeValidationResponse
+import br.com.m2yconductorservices.data.remote.models.response.PaymentTicketResponse
 import br.com.m2yconductorservices.utils.extensions.m2yCdtChangeDateFormat
 import br.com.m2yconductorservices.utils.extensions.m2yCdtDateFromString
 import br.com.m2yconductorservices.utils.extensions.m2yCdtFormat
@@ -112,7 +113,8 @@ fun PaymentModel.toTicketModel(accountId: String): TicketModel {
 }
 
 fun PaymentModel.toReceiptModel(): ReceiptModel {
-    return ReceiptModel("", "", jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_TIME_FORMAT), type = ReceiptType.PAYMENT, payment = ReceiptPaymentModel(barcode, jsonObject?.name ?: description,
+    val descriptionObject =  Gson().fromJson(description, PaymentTicketResponse.PaymentTicketJson::class.java)
+    return ReceiptModel("", "", jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_TIME_FORMAT), type = ReceiptType.PAYMENT, payment = ReceiptPaymentModel(barcode, jsonObject?.name ?: descriptionObject.name,
             jsonObject?.expiration, jsonObject?.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_FORMAT), jsonObject?.discount, jsonObject?.fine,
             jsonObject?.charges, jsonObject?.interest, jsonObject?.cpfOrCNPJ, jsonObject?.paymentDate,
             jsonObject?.amount, M2YCDTPersistUserInformation.accountId()))
