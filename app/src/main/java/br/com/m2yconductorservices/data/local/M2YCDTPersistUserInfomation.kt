@@ -14,6 +14,7 @@ object M2YCDTPersistUserInformation {
     private var password: String = ""
     private var firstTime: Boolean = false
     private var listAccounts: List<AccountResponse>? = null
+    private var phone: String? = null
 
     fun resetUser() {
         persistedUser = null
@@ -110,9 +111,10 @@ object M2YCDTPersistUserInformation {
         return re()
     }
 
-    fun phone(): String = persistedUser?.phone ?: ""
+    fun phone(): String = persistedUser?.phone ?: phone ?: ""
     fun phone(newPhone: String): String {
         persistedUser?.phone = newPhone
+        this.phone = newPhone
         return phone()
     }
 
