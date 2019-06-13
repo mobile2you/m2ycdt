@@ -113,7 +113,7 @@ object M2YCDTPersistUserInformation {
     fun phone(): String = persistedUser?.phone ?: ""
     fun phone(newPhone: String): String {
         persistedUser?.phone = newPhone
-        return re()
+        return phone()
     }
 
     fun blocked(): Boolean = persistedUser?.blocked ?: false
