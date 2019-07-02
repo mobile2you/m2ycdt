@@ -13,6 +13,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.net.ConnectException;
 import java.net.ProtocolException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -45,6 +46,7 @@ public class M2YCDTErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
 
     public static CallAdapter.Factory create() {
         return new M2YCDTErrorHandlingCallAdapterFactory();
+
     }
 
     @Override
@@ -117,6 +119,9 @@ public class M2YCDTErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
                         }
                     });
                     returnableThrowable = M2YCDTRetrofitException.protocolError(throwable);
+                } else if (throwable instanceof ConnectException) {
+                    // Network error
+                    returnableThrowable = M2YCDTRetrofitException.networkError(new IOException(ERROR_UNKNOWN_HOST));
                 }
                 return returnableThrowable;
             } else if (throwable instanceof JsonParseException) {
@@ -128,8 +133,10 @@ public class M2YCDTErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
                 return M2YCDTRetrofitException.unexpectedError(throwable);
             }
 
+
             // We don't know what happened. We need to simply convert to an unknown error
             return M2YCDTRetrofitException.unexpectedError(throwable);
         }
+
     }
 }
