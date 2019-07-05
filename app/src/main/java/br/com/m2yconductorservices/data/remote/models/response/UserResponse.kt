@@ -21,7 +21,8 @@ data class UserResponse(
         var urls: LoginUrlResponse?,
         var email: String?,
         var token: String,
-        var has_cards: Boolean
+        var has_cards: Boolean,
+        var plain: String?
 )
 
 data class LoginUrlResponse(
