@@ -22,7 +22,7 @@ data class UserResponse(
         var email: String?,
         var token: String,
         var has_cards: Boolean,
-        var plain: String?
+        var plan: String?
 )
 
 data class LoginUrlResponse(
