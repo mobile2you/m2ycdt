@@ -24,7 +24,9 @@ data class LoginSignUpRequest(
     var city: String?,
     var state: String?,
     var number: String?,
-    var complement: String?
+    var complement: String?,
+    var card_pass: String?,
+    var password: String?
 )
 
 
