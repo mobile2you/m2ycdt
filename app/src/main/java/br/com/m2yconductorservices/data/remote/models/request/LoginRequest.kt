@@ -7,17 +7,13 @@ data class LoginRequest(
     var password: String
 )
 
-data class LoginSignUpRequest(
+data class LoginSignUpRequestPF(
     var name: String?,
     var phone: String?,
     var email: String?,
     var cpf: String?,
     var birth_date: String?,
-    var mother_name: String?,
-    var company_date: String?,
-    var social: String?,
-    var cnpj: String?,
-    var cnae: String?
+    var mother_name: String?
 )
 
 
