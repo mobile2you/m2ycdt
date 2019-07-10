@@ -29,7 +29,7 @@ interface M2YCDTLoginService {
     fun checkCpf(@Body cpf: CpfRequest?): Single<FirstAccessResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}register")
-    fun register(@Body request: LoginSignUpRequest): Single<UserResponse>
+    fun register(@Body request: NewPasswordRequest): Single<UserResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}checkCode")
     fun checkCode(@Body code: CheckCodeRequest?): Single<Any>

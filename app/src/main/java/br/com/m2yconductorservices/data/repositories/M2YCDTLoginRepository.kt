@@ -31,7 +31,7 @@ object M2YCDTLoginRepository {
 
     fun createPerson(request: CreatePersonRequest) = M2YCDTLoginRemoteDataSource.createPerson(request)
 
-    fun register(request: LoginSignUpRequest) = M2YCDTLoginRemoteDataSource.register(request)
+    fun register(request: NewPasswordRequest) = M2YCDTLoginRemoteDataSource.register(request)
 
     fun checkCode(code: CheckCodeRequest) = M2YCDTLoginRemoteDataSource.checkCode(code)
 

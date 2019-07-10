@@ -23,7 +23,7 @@ object M2YCDTLoginRemoteDataSource {
 
     fun createPerson(request: CreatePersonRequest) = service.createPerson(request)
 
-    fun register(request: LoginSignUpRequest) = service.register(request)
+    fun register(request: NewPasswordRequest) = service.register(request)
 
     fun checkCode(code: CheckCodeRequest?) = service.checkCode(code)
 
