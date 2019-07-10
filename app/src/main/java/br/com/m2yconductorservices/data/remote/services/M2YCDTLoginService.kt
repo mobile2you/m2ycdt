@@ -35,7 +35,7 @@ interface M2YCDTLoginService {
     fun registerPJ(@Body request: LoginSignUpRequest): Single<UserResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}checkCode")
-    fun checkCode(@Body code: CheckCodeRequest?): Single<Any>
+    fun checkCode(@Body code: CheckCodeRequest?): Single<UserResponse>
 
     @POST("${M2YCDTNetworkConstants.LOGIN_URL}sendCode")
     fun sendCode(@Body request: SendCodeRequest?): Single<Any>
