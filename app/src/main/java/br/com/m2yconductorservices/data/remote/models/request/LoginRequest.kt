@@ -22,6 +22,7 @@ data class LoginSignUpRequest(
     var cnae: String?
 )
 
+
 data class NewPasswordRequest(
     var password: String?,
     var name: String?,
