@@ -8,8 +8,6 @@ data class LoginRequest(
 )
 
 data class LoginSignUpRequest(
-    var person_id: String?,
-    var cardId: String?,
     var name: String?,
     var phone: String?,
     var email: String?,
