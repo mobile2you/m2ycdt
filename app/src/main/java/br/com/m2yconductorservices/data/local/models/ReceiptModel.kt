@@ -166,7 +166,7 @@ fun RechargeRequest.toReceiptModel(): ReceiptModel {
         phoneNumber = "($ddd) $phoneNumber",
         operator = dealerName,
         name = nickname,
-        value = (amount / 100).m2yCdtFormatCurrencyBRL()
+        value = (amount).m2yCdtFormatCurrencyBRL()
     )
 
     return ReceiptModel(
