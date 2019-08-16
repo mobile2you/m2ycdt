@@ -5,7 +5,7 @@ import java.io.Serializable
 data class LoginRequest(
     var cpf: String,
     var password: String
-)
+) : Serializable
 
 data class LoginSignUpRequest(
     var name: String?,
@@ -27,7 +27,7 @@ data class LoginSignUpRequest(
     var complement: String?,
     var card_pass: String?,
     var password: String?
-)
+) : Serializable
 
 
 data class NewPasswordRequest(
