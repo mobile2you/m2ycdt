@@ -10,22 +10,39 @@ object M2YCDTTransferRepository {
 
 
     fun performP2PTransfer(newTransfer: NewTransferModel): Single<ReceiptModel> {
-        return M2YCDTTransferRemoteDataSource.performP2PTransfer(newTransfer.toRequest(M2YCDTAccountRepository.accountId.toLong())).map {
+        return M2YCDTTransferRemoteDataSource.performP2PTransfer(
+            newTransfer.toRequest(
+                originalAccountId = try {
+                    M2YCDTAccountRepository.accountId.toLong()
+                } catch (e: Exception) {
+                    0L
+                }
+            )
+        ).map {
             it.toReceiptModel()
         }
     }
 
     fun performBankTransfer(newTransfer: NewTransferModel): Single<ReceiptModel> {
-        return M2YCDTTransferRemoteDataSource.performBankTransfer(newTransfer.toBankRequest(M2YCDTAccountRepository.accountId.toLong())).map {
-            it.toReceiptModel()
-        }
+        return M2YCDTTransferRemoteDataSource.performBankTransfer(
+            newTransfer.toBankRequest(
+                originalAccountId = try {
+                    M2YCDTAccountRepository.accountId.toLong()
+                } catch (e: Exception) {
+                    0L
+                }
+            )
+        ).map { it.toReceiptModel() }
     }
 
-    fun getp2pTransfer(idAccount: AccountIdIntRequest?) = M2YCDTTransferRemoteDataSource.getp2pTransfer(idAccount)
+    fun getp2pTransfer(idAccount: AccountIdIntRequest?) =
+        M2YCDTTransferRemoteDataSource.getp2pTransfer(idAccount)
 
-    fun getBankTransfers(idAccount: AccountIdIntRequest?) = M2YCDTTransferRemoteDataSource.getBankTransfers(idAccount)
+    fun getBankTransfers(idAccount: AccountIdIntRequest?) =
+        M2YCDTTransferRemoteDataSource.getBankTransfers(idAccount)
 
-    fun favoriteTransfer(request: FavoriteTransferRequest) = M2YCDTTransferRemoteDataSource.favoriteTransfer(request)
+    fun favoriteTransfer(request: FavoriteTransferRequest) =
+        M2YCDTTransferRemoteDataSource.favoriteTransfer(request)
 
     fun getTransfers() = M2YCDTTransferRemoteDataSource.getTransfers()
 
