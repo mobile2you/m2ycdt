@@ -21,6 +21,7 @@ data class LoginSignUpRequest(
     var neighborhood: String?,
     var zip: String?,
     var address: String?,
+    var delivery_address: AddressModel?,
     var city: String?,
     var state: String?,
     var number: String?,

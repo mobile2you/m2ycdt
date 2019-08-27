@@ -1,13 +1,14 @@
 package br.com.m2yconductorservices.data.remote.models.request
 
-data class AssociateCardRequest (
+import java.io.Serializable
+
+data class AssociateCardRequest(
     var cpf: String?,
     var cardNumber: String?
 
 )
 
-
-data class  CreatePersonRequest (
+data class CreatePersonRequest(
     var cpf: String,
     var birth_date: String?,
     var name: String?,
@@ -32,7 +33,10 @@ data class AddressModel(
     var neighborhood: String = "",
     var ref: String = "",
     var country: String = ""
-) {
-    fun formatedStreet() = if (complement.isNotBlank()) "$street, $number, $complement" else "$street, $number"
+) : Serializable {
+
+    fun formatedStreet() =
+        if (complement.isNotBlank()) "$street, $number, $complement" else "$street, $number"
+
     fun formatedCity() = "$city - $state"
 }
