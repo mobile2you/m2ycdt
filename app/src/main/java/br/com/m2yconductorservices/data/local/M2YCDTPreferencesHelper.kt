@@ -29,6 +29,7 @@ private const val PREF_URL_TERMS = "$SHARED_PREFERENCES_NAME.PREF_URL_TERMS"
 private const val PREF_URL_POLICY = "$SHARED_PREFERENCES_NAME.PREF_URL_POLICY"
 private const val PREF_ACCOUNT_ID = "$SHARED_PREFERENCES_NAME.PREF_ACCOUNT_ID"
 private const val PREF_USER_CPF = "$SHARED_PREFERENCES_NAME.PREF_USER_CPF"
+private const val PREF_USER_CNPJ = "$SHARED_PREFERENCES_NAME.PREF_USER_CNPJ"
 private const val PREF_USER_PASSWORD = "$SHARED_PREFERENCES_NAME.PREF_USER_PASSWORD"
 private const val PREF_DEVICE_ID = "$SHARED_PREFERENCES_NAME.PREF_DEVICE_ID"
 
@@ -117,6 +118,10 @@ object M2YCDTPreferencesHelper {
     var userCpf: String?
         get() = sharedPreferences.getString(PREF_USER_CPF, null)
         set(value) = sharedPreferences.edit().putString(PREF_USER_CPF, value).apply()
+
+    var userCnpj: String?
+        get() = sharedPreferences.getString(PREF_USER_CNPJ, null)
+        set(value) = sharedPreferences.edit().putString(PREF_USER_CNPJ, value).apply()
 
     var pinPadSitefIP: String?
         get() = sharedPreferences.getString(PREF_PINPAD_SITEF_IP, null)
