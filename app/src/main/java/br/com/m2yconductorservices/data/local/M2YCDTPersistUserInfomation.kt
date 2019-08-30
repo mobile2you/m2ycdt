@@ -220,6 +220,8 @@ object M2YCDTPersistUserInformation {
         return (SystemClock.elapsedRealtime() - cdtTokenSystemTime()) > cdtExpiresIn()
     }
 
+    fun isCnpjUser(): Boolean = persistedUser?.cnpj?.isNotBlank() ?: false
+
     fun clear() {
         persistedUser = null
         cdtTokenResponse = TokenCDTResponse("", -1, "")
