@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import br.com.m2yconductorservices.M2YCDTConstants
 import br.com.m2yconductorservices.utils.M2YCDTBase64Helper
-import java.lang.NullPointerException
 
 private const val SHARED_PREFERENCES_NAME = M2YCDTConstants.PACKAGE_NAME + ".SHARED_PREFERENCES"
 
@@ -12,13 +11,15 @@ private const val PREF_SESSION_COOKIE = "$SHARED_PREFERENCES_NAME.PREF_SESSION_C
 private const val PREF_ADD_MONEY = "$SHARED_PREFERENCES_NAME.PREF_ADD_MONEY"
 private const val PREF_DEV_SESSION_COOKIE = "$SHARED_PREFERENCES_NAME.PREF_DEV_SESSION_COOKIE"
 private const val PREF_USER_FINGERPRINT = "$SHARED_PREFERENCES_NAME.PREF_USER_FINGERPRINT"
-private const val PREF_USER_FINGERPRINT_AVAILABLE = "$SHARED_PREFERENCES_NAME.PREF_USER_FINGERPRINT_AVAILABLE"
+private const val PREF_USER_FINGERPRINT_AVAILABLE =
+    "$SHARED_PREFERENCES_NAME.PREF_USER_FINGERPRINT_AVAILABLE"
 private const val PREF_USER_PINPAD = "$SHARED_PREFERENCES_NAME.PREF_USER_PINPAD"
 private const val PREF_PINPAD_STORE = "$SHARED_PREFERENCES_NAME.PREF_PINPAD_STORE"
 private const val PREF_USER_CARD_ID = "$SHARED_PREFERENCES_NAME.PREF_USER_CARD_ID"
 private const val PREF_CDT_TOKEN = "$SHARED_PREFERENCES_NAME.PREF_CDT_TOKEN"
 private const val PREF_CDT_TOKEN_SYSTEM_TIME = "$SHARED_PREFERENCES_NAME.PREF_CDT_TOKEN_SYSTEM_TIME"
-private const val PREF_CDT_TOKEN_EXPIRATION_TIME = "$SHARED_PREFERENCES_NAME.PREF_CDT_TOKEN_EXPIRATION_TIME"
+private const val PREF_CDT_TOKEN_EXPIRATION_TIME =
+    "$SHARED_PREFERENCES_NAME.PREF_CDT_TOKEN_EXPIRATION_TIME"
 private const val PREF_DEV_CDT_TOKEN = "$SHARED_PREFERENCES_NAME.PREF_DEV_CDT_TOKEN"
 private const val PREF_BASIC_AUTH = "$SHARED_PREFERENCES_NAME.PREF_BASIC_AUTH"
 private const val PREF_LAST_CLIPBOARD = "$SHARED_PREFERENCES_NAME.PREF_LAST_CLIPBOARD"
@@ -29,6 +30,7 @@ private const val PREF_URL_TERMS = "$SHARED_PREFERENCES_NAME.PREF_URL_TERMS"
 private const val PREF_URL_POLICY = "$SHARED_PREFERENCES_NAME.PREF_URL_POLICY"
 private const val PREF_ACCOUNT_ID = "$SHARED_PREFERENCES_NAME.PREF_ACCOUNT_ID"
 private const val PREF_USER_CPF = "$SHARED_PREFERENCES_NAME.PREF_USER_CPF"
+private const val PREF_USER_NAME = "$SHARED_PREFERENCES_NAME.PREF_USER_NAME"
 private const val PREF_USER_PASSWORD = "$SHARED_PREFERENCES_NAME.PREF_USER_PASSWORD"
 private const val PREF_DEVICE_ID = "$SHARED_PREFERENCES_NAME.PREF_DEVICE_ID"
 
@@ -44,7 +46,8 @@ object M2YCDTPreferencesHelper {
         }
 
     fun init(context: Context) {
-        sharedPreferencesInstance = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        sharedPreferencesInstance =
+            context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
 
     var sessionCookie: String?
@@ -84,7 +87,10 @@ object M2YCDTPreferencesHelper {
 
     var userFingerprintAvailable: Boolean
         get() = sharedPreferences.getBoolean(PREF_USER_FINGERPRINT_AVAILABLE, false)
-        set(value) = sharedPreferences.edit().putBoolean(PREF_USER_FINGERPRINT_AVAILABLE, value).apply()
+        set(value) = sharedPreferences.edit().putBoolean(
+            PREF_USER_FINGERPRINT_AVAILABLE,
+            value
+        ).apply()
 
     var deviceId: String?
         get() = sharedPreferences.getString(PREF_DEVICE_ID, null)
@@ -117,6 +123,10 @@ object M2YCDTPreferencesHelper {
     var userCpf: String?
         get() = sharedPreferences.getString(PREF_USER_CPF, null)
         set(value) = sharedPreferences.edit().putString(PREF_USER_CPF, value).apply()
+
+    var userName: String?
+        get() = sharedPreferences.getString(PREF_USER_NAME, null)
+        set(value) = sharedPreferences.edit().putString(PREF_USER_NAME, value).apply()
 
     var pinPadSitefIP: String?
         get() = sharedPreferences.getString(PREF_PINPAD_SITEF_IP, null)

@@ -27,6 +27,7 @@ object M2YCDTPersistUserInformation {
         this.persistedUser = user
         this.userLogin = user.cpf
         M2YCDTPreferencesHelper.userCpf = user.cpf
+        M2YCDTPreferencesHelper.userName = user.getFirstName()
     }
 
     fun setAccounts(listAccounts: List<AccountResponse>) {
@@ -44,11 +45,7 @@ object M2YCDTPersistUserInformation {
         return createdAt()
     }
 
-    fun name(): String = persistedUser?.name ?: ""
-    fun name(newName: String): String {
-        persistedUser?.name = newName
-        return name()
-    }
+    fun name(): String = persistedUser?.name ?: M2YCDTPreferencesHelper.userName ?: ""
 
     fun accountId(): String = persistedUser?.account_id ?: ""
     fun accountId(newAccountId: String): String {
@@ -154,7 +151,9 @@ object M2YCDTPersistUserInformation {
         return userAccountString()
     }
 
-    fun userLogin(): String = if (!userLogin.isNullOrEmpty()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
+    fun userLogin(): String =
+        if (!userLogin.isNullOrEmpty()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
+
     fun userLogin(newUserLogin: String): String {
         userLogin = newUserLogin
         return userLogin()
@@ -169,7 +168,9 @@ object M2YCDTPersistUserInformation {
     }
 
     fun password(): String =
-        if (!password.isEmpty()) password else M2YCDTBase64Helper.descrypt(M2YCDTPreferencesHelper.userPassword ?: "")
+        if (!password.isEmpty()) password else M2YCDTBase64Helper.descrypt(
+            M2YCDTPreferencesHelper.userPassword ?: ""
+        )
 
     fun password(newPassword: String): String {
         password = newPassword
