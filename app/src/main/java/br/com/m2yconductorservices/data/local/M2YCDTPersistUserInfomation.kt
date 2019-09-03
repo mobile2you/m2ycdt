@@ -10,6 +10,7 @@ object M2YCDTPersistUserInformation {
     private var cdtTokenSystemTime: Long = -1
     private var userAccountString: String? = null
     private var userLogin: String? = null
+    private var userCnpj: String? = null
     private var userAccounts: AccountPageResponse? = null
     private var password: String = ""
     private var firstTime: Boolean = false
@@ -26,6 +27,7 @@ object M2YCDTPersistUserInformation {
     fun setUser(user: UserResponse) {
         this.persistedUser = user
         this.userLogin = user.cpf
+        this.userCnpj = user.cnpj
         M2YCDTPreferencesHelper.userCpf = user.cpf
         M2YCDTPreferencesHelper.userName = user.getFirstName()
     }
@@ -38,6 +40,7 @@ object M2YCDTPersistUserInformation {
 
     fun id(): String = persistedUser?.id ?: ""
     fun cpf(): String = persistedUser?.cpf ?: M2YCDTPreferencesHelper.userCpf ?: ""
+    fun cnpj(): String = persistedUser?.cnpj ?: M2YCDTPreferencesHelper.userCnpj ?: ""
 
     fun createdAt(): String = persistedUser?.created_at ?: ""
     fun createdAt(newCreatedAt: String): String {
@@ -217,6 +220,8 @@ object M2YCDTPersistUserInformation {
     fun isCdtTokenInvalid(): Boolean {
         return (SystemClock.elapsedRealtime() - cdtTokenSystemTime()) > cdtExpiresIn()
     }
+
+    fun isCnpjUser(): Boolean = persistedUser?.cnpj?.isNotBlank() ?: false
 
     fun clear() {
         persistedUser = null
