@@ -12,5 +12,6 @@ import retrofit2.http.POST
 interface M2YCDTBankSlipService {
 
     @POST("${M2YCDTNetworkConstants.CDT_BANK_SLIP_URL}getPDF")
-    fun getPDF(@Body ticketId: IdIntRequest?, @Header("Accept") accept: String = "application/pdf") : Single<Response<ResponseBody>>
+    fun getPDF(@Body ticketId: IdIntRequest?,
+               @Header("Accept") accept: String = "application/pdf"): Single<Response<ResponseBody>>
 }
