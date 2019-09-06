@@ -1,5 +1,7 @@
 package br.com.m2yconductorservices.data.remote.models.response
 
+import java.io.Serializable
+
 data class TransferResponse(
     var id: String?,
     var bank: BankResponse?,
@@ -22,3 +24,18 @@ data class BankResponse(
 ) {
     fun toModel() = BankModel(id ?: "", name ?: "", color ?: "", code?.toInt() ?: 0)
 }
+
+data class TransferResponseNew(
+    var id: String?,
+    var bank: String?,
+    var agency: String?,
+    var account: String?,
+    var name: String?,
+    var cpf: String?,
+    var nickname: String?,
+    var accountType: String?,
+    var digit: String?,
+    var cpfOrCnpj: String?,
+    var color: String?
+
+) : Serializable

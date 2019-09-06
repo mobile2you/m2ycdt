@@ -13,8 +13,12 @@ import retrofit2.http.POST
 
 interface M2YCDTTransferService {
 
+    @Deprecated("Fix TransferResponse bankCode use getTransfersFavored")
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}getTransfers")
     fun getTransfers() : Single<List<TransferResponse>>
+
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}getTransfers")
+    fun getTransfersFavored() : Single<List<TransferResponseNew>>
 
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}favoriteTransfer")
     fun favoriteTransfer(@Body request: FavoriteTransferRequest) : Single<Any>

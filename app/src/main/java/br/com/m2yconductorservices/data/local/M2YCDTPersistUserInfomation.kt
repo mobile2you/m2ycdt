@@ -40,7 +40,16 @@ object M2YCDTPersistUserInformation {
 
     fun id(): String = persistedUser?.id ?: ""
     fun cpf(): String = persistedUser?.cpf ?: M2YCDTPreferencesHelper.userCpf ?: ""
+    fun cpf(cpf: String): String {
+        persistedUser?.cpf = cpf
+        return cpf()
+    }
+
     fun cnpj(): String = persistedUser?.cnpj ?: M2YCDTPreferencesHelper.userCnpj ?: ""
+    fun cnpj(cnpj: String): String {
+        persistedUser?.cnpj = cnpj
+        return cnpj()
+    }
 
     fun createdAt(): String = persistedUser?.created_at ?: ""
     fun createdAt(newCreatedAt: String): String {
