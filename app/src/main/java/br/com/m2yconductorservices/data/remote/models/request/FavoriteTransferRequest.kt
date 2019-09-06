@@ -1,7 +1,7 @@
 package br.com.m2yconductorservices.data.remote.models.request
 
 data class FavoriteTransferRequest(
-        var bankCode: String,
+        var bank: String,
         var agency: String,
         var account: String,
         var digit: String,
