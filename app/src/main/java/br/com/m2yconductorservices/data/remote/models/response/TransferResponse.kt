@@ -28,6 +28,7 @@ data class BankResponse(
 data class TransferResponseNew(
     var id: String?,
     var bank: String?,
+    var bankName: String?,
     var agency: String?,
     var account: String?,
     var name: String?,
