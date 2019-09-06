@@ -25,5 +25,7 @@ object M2YCDTTransferRemoteDataSource {
 
     fun getTransfers() = service.getTransfers()
 
+    fun getTransfersFavored() = service.getTransfersFavored()
+
     fun favoriteTransfer(request: FavoriteTransferRequest) = service.favoriteTransfer(request)
 }
