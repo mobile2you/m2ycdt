@@ -8,7 +8,8 @@ data class ExtractModel(
         val title: String,
         val amount: Float,
         val codigoMCC: Int?,
-        val refund_status: String?
+        val refund_status: String?,
+        val flagCredito: Int?
 ) {
     fun getMccDrawable(): Int? {
         return when (codigoMCC) {

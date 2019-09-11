@@ -29,5 +29,5 @@ fun ExtractResponse.toModel(): ExtractModel {
 
     return ExtractModel(id = idTransferencia ?: "id", date = this.date ?: "",
             title = title?.m2yCdtNormalizeSpaces() ?: "", amount = (value ?: 0f), codigoMCC = codigoMCC,
-            refund_status = refund_status)
+            refund_status = refund_status, flagCredito = flagCredito)
 }
