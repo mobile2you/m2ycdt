@@ -34,7 +34,7 @@ object M2YCDTPersistUserInformation {
 
     fun hasPendingDocuments(): Boolean = !persistedUser?.pending_documents.isNullOrBlank()
 
-    fun setPendingDocument(currentStep: String) {
+    fun setPendingDocument(currentStep: String?) {
         persistedUser?.pending_documents = currentStep
     }
 
