@@ -46,5 +46,7 @@ object M2YCDTTransferRepository {
 
     fun getTransfers() = M2YCDTTransferRemoteDataSource.getTransfers()
 
+    fun getTransfersFavored() = M2YCDTTransferRemoteDataSource.getTransfersFavored()
+
 
 }
