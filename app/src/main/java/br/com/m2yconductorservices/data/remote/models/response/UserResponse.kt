@@ -28,8 +28,11 @@ data class UserResponse(
     var email: String?,
     var token: String,
     var has_cards: Boolean,
-    var plan: String?
-)
+    var plan: String?,
+    var pending_documents: String?
+){
+    fun hasPendingDocuments() = !pending_documents.isNullOrEmpty()
+}
 
 data class LoginUrlResponse(
     val terms: String?,

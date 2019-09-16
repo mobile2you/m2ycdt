@@ -33,7 +33,7 @@ object M2YCDTBankSlipRepository {
     ): Single<File> = M2YCDTBankSlipRemoteDataSource.getPDF(ticketId)
         .map {
             val file = File.createTempFile(
-                "Boleto${ticketId?.id}", /* prefix */
+                "Ticket${ticketId?.id}", /* prefix */
                 ".pdf", /* suffix */
                 storageDir      /* directory */
             )
