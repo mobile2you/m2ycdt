@@ -30,9 +30,7 @@ data class UserResponse(
     var has_cards: Boolean,
     var plan: String?,
     var pending_documents: String?
-){
-    fun hasPendingDocuments() = !pending_documents.isNullOrEmpty()
-}
+)
 
 data class LoginUrlResponse(
     val terms: String?,
