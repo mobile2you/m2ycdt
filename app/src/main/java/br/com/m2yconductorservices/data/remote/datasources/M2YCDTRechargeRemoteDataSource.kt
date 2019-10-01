@@ -2,9 +2,7 @@ package br.com.m2yconductorservices.data.remote.datasources
 
 import br.com.m2yconductorservices.data.remote.M2YCDTServiceGenerator
 import br.com.m2yconductorservices.data.remote.interceptors.M2YCDTInterceptor
-import br.com.m2yconductorservices.data.remote.models.request.AccountIdRequest
-import br.com.m2yconductorservices.data.remote.models.request.FavoriteRechargeRequest
-import br.com.m2yconductorservices.data.remote.models.request.RechargeRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 import br.com.m2yconductorservices.data.remote.services.M2YCDTRechargeService
 
 object M2YCDTRechargeRemoteDataSource {
@@ -27,4 +25,8 @@ object M2YCDTRechargeRemoteDataSource {
     fun favoriteRecharge(request: FavoriteRechargeRequest) = service.favoriteRecharge(request)
 
     fun confirmRecharge(request: RechargeRequest) = service.confirmRecharge(request)
+
+    fun deleteRechargeFavorite(request: DeleteRechargeFavoredContactRequest) = service.deleteRechargeFavorite(request)
+
+    fun editRechargeFavorite(request: EditRechargeFavoredContactRequest) = service.editRechargeFavorite(request)
 }
