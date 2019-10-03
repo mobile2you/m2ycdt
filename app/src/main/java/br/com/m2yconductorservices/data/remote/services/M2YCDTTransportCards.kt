@@ -1,10 +1,7 @@
 package br.com.m2yconductorservices.data.remote.services
 
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
-import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntRequest
-import br.com.m2yconductorservices.data.remote.models.request.EditTransportFavoriteRequest
-import br.com.m2yconductorservices.data.remote.models.request.TransportFavored
-import br.com.m2yconductorservices.data.remote.models.request.TransportRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 import br.com.m2yconductorservices.data.remote.models.response.TransportRechargeResponse
 import br.com.m2yconductorservices.data.remote.models.response.TransportResponse
 import br.com.m2yconductorservices.data.remote.models.response.UniqueTicketResponse
@@ -30,7 +27,7 @@ interface M2YCDTTransportCards {
     fun getRecharges(@Body request: AccountIdIntRequest) : Single<UniqueTicketResponse>
 
     @POST("${M2YCDTNetworkConstants.BANKS_TRANSPORTS}deleteCardFavorite")
-    fun deleteCardFavorite(@Body id: String) : Single<Any>
+    fun deleteCardFavorite(@Body request: DeleteTransportFavoriteRequest) : Single<Any>
 
     @POST("${M2YCDTNetworkConstants.BANKS_TRANSPORTS}editCardFavorite")
     fun editCardFavorite(@Body request: EditTransportFavoriteRequest) : Single<Any>

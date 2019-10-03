@@ -1,10 +1,7 @@
 package br.com.m2yconductorservices.data.repositories
 
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTTransportRemoteDataSource
-import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntRequest
-import br.com.m2yconductorservices.data.remote.models.request.EditTransportFavoriteRequest
-import br.com.m2yconductorservices.data.remote.models.request.TransportFavored
-import br.com.m2yconductorservices.data.remote.models.request.TransportRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 
 object M2YCDTTransportRepository {
 
@@ -18,7 +15,7 @@ object M2YCDTTransportRepository {
 
     fun getRecharges(request: AccountIdIntRequest) = M2YCDTTransportRemoteDataSource.getRecharges(request)
 
-    fun deleteCardFavorite(id: String) = M2YCDTTransportRemoteDataSource.deleteCardFavorite(id)
+    fun deleteCardFavorite(request: DeleteTransportFavoriteRequest) = M2YCDTTransportRemoteDataSource.deleteCardFavorite(request)
 
     fun editCardFavorite(request: EditTransportFavoriteRequest) = M2YCDTTransportRemoteDataSource.editCardFavorite(request)
 
