@@ -9,3 +9,9 @@ data class TransportFavored (
     var color: String?
 
 ) : Serializable
+
+data class EditTransportFavoriteRequest (
+    val id: String,
+    val name: String,
+    val cardNumber: String
+)
