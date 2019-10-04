@@ -246,6 +246,8 @@ object M2YCDTPersistUserInformation {
 
     fun isCnpjUser(): Boolean = persistedUser?.cnpj?.isNotBlank() ?: false
 
+    fun isFirstAccess(): Boolean = persistedUser?.first_access ?: false
+
     fun clear() {
         persistedUser = null
         cdtTokenResponse = TokenCDTResponse("", -1, "")
