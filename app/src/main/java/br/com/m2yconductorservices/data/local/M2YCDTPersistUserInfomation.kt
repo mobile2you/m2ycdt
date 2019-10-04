@@ -172,7 +172,7 @@ object M2YCDTPersistUserInformation {
     }
 
     fun userLogin(): String =
-        if (userLogin.isNotBlank()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
+        if (!userLogin.isNullOrBlank()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
 
     fun userLogin(newUserLogin: String): String {
         userLogin = newUserLogin

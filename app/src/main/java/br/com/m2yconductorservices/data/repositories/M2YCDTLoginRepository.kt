@@ -13,7 +13,7 @@ object M2YCDTLoginRepository {
             M2YCDTPreferencesHelper.userFingerprint = false
         }
         M2YCDTPersistUserInformation.setUser(it)
-        M2YCDTPersistUserInformation.userLogin = request.cpf
+        M2YCDTPersistUserInformation.userLogin(request.cpf)
         M2YCDTPersistUserInformation.password(request.password)
         M2YCDTPersistUserInformation.urls(it.urls)
         it.picture?.let { it1 -> M2YCDTPersistUserInformation.picture(it1) }
