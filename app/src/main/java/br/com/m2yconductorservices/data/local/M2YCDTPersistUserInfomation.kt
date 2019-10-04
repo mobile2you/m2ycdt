@@ -26,7 +26,7 @@ object M2YCDTPersistUserInformation {
 
     fun setUser(user: UserResponse) {
         this.persistedUser = user
-        this.userLogin = user.cpf
+        // this.userLogin = user.cpf
         this.userCnpj = user.cnpj
         M2YCDTPreferencesHelper.userCpf = user.cpf
         M2YCDTPreferencesHelper.userName = user.getFirstName()
@@ -172,7 +172,7 @@ object M2YCDTPersistUserInformation {
     }
 
     fun userLogin(): String =
-        if (!userLogin.isNullOrEmpty()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
+        if (userLogin.isNotBlank()) userLogin!! else M2YCDTPreferencesHelper.userCpf ?: ""
 
     fun userLogin(newUserLogin: String): String {
         userLogin = newUserLogin
