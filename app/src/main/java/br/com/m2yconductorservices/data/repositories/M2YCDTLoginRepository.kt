@@ -9,7 +9,7 @@ import br.com.m2yconductorservices.data.remote.models.request.*
 object M2YCDTLoginRepository {
 
     fun signin(request: LoginRequest) = M2YCDTLoginRemoteDataSource.signin(request).doOnSuccess {
-        if (M2YCDTPersistUserInformation.cpf() != request.cpf) {
+        if (M2YCDTPersistUserInformation.userLogin() != request.cpf) {
             M2YCDTPreferencesHelper.userFingerprint = false
         }
         M2YCDTPersistUserInformation.setUser(it)
