@@ -53,7 +53,7 @@ object M2YCDTLoginRepository {
     fun getSavedLoginData(): SavedLoginModel {
         return SavedLoginModel(
                 M2YCDTPersistUserInformation.name(),
-                M2YCDTPersistUserInformation.cpf(),
+                M2YCDTPersistUserInformation.userLogin(),
                 M2YCDTPersistUserInformation.password())
     }
 
