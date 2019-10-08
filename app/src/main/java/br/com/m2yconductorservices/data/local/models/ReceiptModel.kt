@@ -161,6 +161,40 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
     )
 }
 
+fun PaymentTicketV1Response.toReceiptModel(): ReceiptModel {
+    var date: String? = null
+
+    this.jsonObject?.let {
+        date = it.paymentDate?.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT)
+    } ?: run {
+        date = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT)
+    }
+
+    val payment = ReceiptPaymentModel(
+        barCode,
+        jsonObject?.name ?: assignor,
+        jsonObject?.expiration ?: dueDate,
+        jsonObject?.paymentDate ?: transactionDate,
+        jsonObject?.discount ?: discount,
+        jsonObject?.fine ?: fine,
+        jsonObject?.charges,
+        jsonObject?.interest,
+        jsonObject?.cpfOrCNPJ ?: assignorDocument,
+        date,
+        amount,
+        account?.toInt().toString()
+    )
+
+    return ReceiptModel(
+        id?.toString(),
+        "",
+        this.dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.RECEIPT_DATE_FORMAT),
+        ReceiptType.PAYMENT,
+        payment = payment,
+        description = description
+    )
+}
+
 fun RechargeRequest.toReceiptModel(): ReceiptModel {
     val recharge = ReceiptRechargeModel(
         phoneNumber = "($ddd) $phoneNumber",

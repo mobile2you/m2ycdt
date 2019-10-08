@@ -1,10 +1,7 @@
 package br.com.m2yconductorservices.data.local.models
 
 import br.com.m2yconductorservices.M2YCDTConstants
-import br.com.m2yconductorservices.data.remote.models.response.PaymentTicketResponse
-import br.com.m2yconductorservices.data.remote.models.response.RechargeVoucherResponse
-import br.com.m2yconductorservices.data.remote.models.response.Transferp2pResponse
-import br.com.m2yconductorservices.data.remote.models.response.VoucherBankResponse
+import br.com.m2yconductorservices.data.remote.models.response.*
 import br.com.m2yconductorservices.utils.extensions.m2yCdtChangeDateFormat
 import br.com.m2yconductorservices.utils.extensions.m2yCdtDateFromString
 import java.util.*
@@ -29,9 +26,18 @@ data class VoucherItemModel(
 }
 
 fun PaymentTicketResponse.toVoucher(): VoucherItemModel {
+    return VoucherItemModel(
+        id = id?.toString() ?: "",
+        nameRes = VoucherTypeItem.PAYMENT.nameRes,
+        date = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT),
+        subject = displayDescription,
+        amount = this.amount ?: 0f)
+}
+
+fun PaymentTicketV1Response.toVoucher(): VoucherItemModel {
     return VoucherItemModel(id = id?.toString() ?: "", nameRes = VoucherTypeItem.PAYMENT.nameRes,
-            date = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT),
-            subject = displayDescription, amount = this.amount ?: 0f)
+        date = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_DATE_FORMAT, M2YCDTConstants.CDT_TICKET_DATE_FORMAT),
+        subject = displayDescription, amount = this.amount ?: 0f)
 }
 
 fun Transferp2pResponse.toVoucher(): VoucherItemModel {
