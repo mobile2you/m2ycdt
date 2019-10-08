@@ -19,7 +19,8 @@ class PaymentTicketResponse(var id: Int?,
                             var charges: Float?,
                             var barCode: String?,
                             var dueDate: String,
-                            var description: String?) : Serializable {
+                            var description: String?,
+                            var status: String?) : Serializable {
 
     val displayDescription: String
         get() = jsonObject?.name ?: ""
