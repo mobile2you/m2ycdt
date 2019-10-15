@@ -7,4 +7,4 @@ data class P2PResponse (
         var nickname: String?,
         var color: String?,
         var id: String?
-)
+) : Serializable
