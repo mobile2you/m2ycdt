@@ -2,8 +2,7 @@ package br.com.m2yconductorservices.data.repositories
 
 import br.com.m2yconductorservices.data.local.models.*
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTTransferRemoteDataSource
-import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntRequest
-import br.com.m2yconductorservices.data.remote.models.request.FavoriteTransferRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 import io.reactivex.Single
 
 object M2YCDTTransferRepository {
@@ -48,7 +47,7 @@ object M2YCDTTransferRepository {
 
     fun getTransfersFavored() = M2YCDTTransferRemoteDataSource.getTransfersFavored()
 
-    fun deleteBankFavorite(request: EditTransferFavoredContactRequest) = CustomBankRemoteDataSource.deleteBankFavorite(request)
+    fun deleteBankFavorite(request: EditTransferFavoredContactRequest) = M2YCDTTransferRemoteDataSource.deleteBankFavorite(request)
 
-    fun editBankFavorite(request: EditTransferFavoredContactRequest) = CustomBankRemoteDataSource.editBankFavorite(request)
+    fun editBankFavorite(request: EditTransferFavoredContactRequest) = M2YCDTTransferRemoteDataSource.editBankFavorite(request)
 }

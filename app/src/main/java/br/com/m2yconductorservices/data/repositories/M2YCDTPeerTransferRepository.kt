@@ -1,7 +1,7 @@
 package br.com.m2yconductorservices.data.repositories
 
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTPeerTransferRemoteDataSource
-import br.com.m2yconductorservices.data.remote.models.request.P2PRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 
 object M2YCDTPeerTransferRepository {
 
