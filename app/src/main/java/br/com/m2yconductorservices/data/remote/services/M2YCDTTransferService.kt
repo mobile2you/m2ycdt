@@ -35,4 +35,9 @@ interface M2YCDTTransferService {
     @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}getBankTransfers")
     fun getBankTransfers(@Body idAccount: AccountIdIntRequest?): Single<List<VoucherBankResponse>>
 
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}deleteBankFavorite")
+    fun deleteBankFavorite(@Body request: EditTransferFavoredContactRequest) : Single<Any>
+
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}editBankFavorite")
+    fun editBankFavorite(@Body request: EditTransferFavoredContactRequest) : Single<Any>
 }

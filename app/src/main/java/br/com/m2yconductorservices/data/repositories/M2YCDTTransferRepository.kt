@@ -48,5 +48,7 @@ object M2YCDTTransferRepository {
 
     fun getTransfersFavored() = M2YCDTTransferRemoteDataSource.getTransfersFavored()
 
+    fun deleteBankFavorite(request: EditTransferFavoredContactRequest) = CustomBankRemoteDataSource.deleteBankFavorite(request)
 
+    fun editBankFavorite(request: EditTransferFavoredContactRequest) = CustomBankRemoteDataSource.editBankFavorite(request)
 }

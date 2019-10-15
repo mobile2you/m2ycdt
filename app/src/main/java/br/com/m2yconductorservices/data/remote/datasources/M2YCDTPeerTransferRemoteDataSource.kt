@@ -14,4 +14,8 @@ object M2YCDTPeerTransferRemoteDataSource {
     fun favoriteP2p(request: P2PRequest) = service.favoriteP2p(request)
 
     fun getP2p() = service.getP2p()
+
+    fun deleteP2pFavorite(request: EditTransferFavoredContactRequest) = service.deleteP2pFavorite(request)
+
+    fun editP2pFavorite(request: EditTransferFavoredContactRequest) = service.editP2pFavorite(request)
 }

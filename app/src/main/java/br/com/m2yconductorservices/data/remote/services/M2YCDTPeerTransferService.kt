@@ -15,4 +15,10 @@ interface M2YCDTPeerTransferService {
 
     @POST("${M2YCDTNetworkConstants.TRANSFER_P2P_URL}getP2p")
     fun getP2p() : Single<List<P2PResponse>>
+
+    @POST("${M2YCDTNetworkConstants.TRANSFER_P2P_URL}deleteP2pFavorite")
+    fun deleteP2pFavorite(@Body request: EditTransferFavoredContactRequest): Single<Any>
+
+    @POST("${M2YCDTNetworkConstants.TRANSFER_P2P_URL}editP2pFavorite")
+    fun editP2pFavorite(@Body request: EditTransferFavoredContactRequest): Single<Any>
 }

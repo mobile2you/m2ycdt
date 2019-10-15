@@ -5,5 +5,6 @@ data class P2PResponse (
         var cpf: String?,
         var account: String?,
         var nickname: String?,
-        var color: String?
+        var color: String?,
+        var id: String?
 )
