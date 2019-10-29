@@ -3,7 +3,7 @@ package br.com.m2yconductorservices.data.remote.models.response
 
 data class GetAboutResponse (
         val id: String? = null,
-        val createdAt: String? = null,
+        val created_at: String? = null,
         val picture: String? = null,
         val name: String? = null,
         val cpf: String? = null,

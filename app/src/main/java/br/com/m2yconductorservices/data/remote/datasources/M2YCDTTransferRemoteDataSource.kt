@@ -3,10 +3,7 @@ package br.com.m2yconductorservices.data.remote.datasources
 import br.com.m2yconductorservices.M2YCDTNetworkConstants
 import br.com.m2yconductorservices.data.remote.M2YCDTServiceGenerator
 import br.com.m2yconductorservices.data.remote.interceptors.M2YCDTInterceptor
-import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntRequest
-import br.com.m2yconductorservices.data.remote.models.request.FavoriteTransferRequest
-import br.com.m2yconductorservices.data.remote.models.request.TransferBankRequest
-import br.com.m2yconductorservices.data.remote.models.request.TransferRequest
+import br.com.m2yconductorservices.data.remote.models.request.*
 import br.com.m2yconductorservices.data.remote.services.M2YCDTTransferService
 
 object M2YCDTTransferRemoteDataSource {
@@ -28,4 +25,8 @@ object M2YCDTTransferRemoteDataSource {
     fun getTransfersFavored() = service.getTransfersFavored()
 
     fun favoriteTransfer(request: FavoriteTransferRequest) = service.favoriteTransfer(request)
+
+    fun deleteBankFavorite(request: EditTransferFavoredContactRequest) = service.deleteBankFavorite(request)
+
+    fun editBankFavorite(request: EditTransferFavoredContactRequest) = service.editBankFavorite(request)
 }

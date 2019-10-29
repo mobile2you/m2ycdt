@@ -7,9 +7,12 @@ import com.google.gson.Gson
 import java.io.Serializable
 import java.lang.Exception
 
-class PaymentTicketResponse(var id: Int?,
+class PaymentTicketV1Response(var id: Int?,
                             var idAdjustment: Float?,
                             var idIssuer: Float?,
+                            var assignor: String?,
+                            var assignorDocument: String?,
+                            var transactionDate: String?,
                             var uniqueIdDablan: String?,
                             var account: Double?,
                             var amount: Float?,
@@ -30,7 +33,7 @@ class PaymentTicketResponse(var id: Int?,
             return try {
                 Gson().fromJson(description, PaymentTicketJson::class.java)
             } catch (ex: Exception) {
-                PaymentTicketJson(null, null, description, null, null, null, null, null, null, null, null)
+                null
             }
         }
 
@@ -54,7 +57,7 @@ class PaymentTicketResponse(var id: Int?,
     }
 }
 
-fun PaymentTicketResponse.toPaymentModel(): PaymentModel {
+fun PaymentTicketV1Response.toPaymentModel(): PaymentModel {
     return PaymentModel(valueWithCharges = amount, barcode = barCode,
             dueDate = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_TICKET_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_FORMAT), password = null, cardId = null)
 }

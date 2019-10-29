@@ -29,7 +29,8 @@ data class UserResponse(
     var token: String,
     var has_cards: Boolean,
     var plan: String?,
-    var pending_documents: String?
+    var pending_documents: String?,
+    var first_access: Boolean?
 )
 
 data class LoginUrlResponse(
