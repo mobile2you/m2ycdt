@@ -32,17 +32,25 @@ object M2YCDTAccountRepository {
         }
     }
 
-    @Deprecated("Should not be used anymore, harder to do maintenance", replaceWith = ReplaceWith("getAccount"))
+    @Deprecated(
+        "Should not be used anymore, harder to do maintenance",
+        replaceWith = ReplaceWith("getAccount")
+    )
     fun findAccount(accountId: IdRequest?) = M2YCDTAccountRemoteDataSource.findAccount(accountId)
 
     fun getAccount(accountId: IdRequest) =
         M2YCDTAccountRemoteDataSource.findAccount(accountId).map { it.toAccountModel() }
 
-    @Deprecated("Should not be used anymore, harder to do maintenance", replaceWith = ReplaceWith("getCardList"))
+    @Deprecated(
+        "Should not be used anymore, harder to do maintenance",
+        replaceWith = ReplaceWith("getCardList")
+    )
     fun getCards(accountId: IdRequest?) = M2YCDTAccountRemoteDataSource.getCards(accountId)
 
     fun getCardList(accountId: IdRequest) =
-        M2YCDTAccountRemoteDataSource.getCards(accountId).map { it.cards?.map { it.toModel() } ?: listOf() }
+        M2YCDTAccountRemoteDataSource.getCards(accountId).map {
+            it.cards?.map { it.toModel() } ?: listOf()
+        }
 
     fun createVirtualCard(accountId: AccountIdIntRequest) =
         M2YCDTAccountRemoteDataSource.createVirtualCard(accountId).map { it.toModel() }
@@ -51,7 +59,7 @@ object M2YCDTAccountRepository {
     val balanceObservable: Observable<BalanceModel> =
         Observable.create<BalanceModel> {
             val observableEmitter = it
-            M2YCDTAccountRepository.findAccount(IdRequest(M2YCDTAccountRepository.accountId)).map { it.toModel() }
+            findAccount(IdRequest(accountId)).map { it.toModel() }
                 .m2yCdtSingleSubscribe(
                     onSuccess = {
                         lastBalance = it
@@ -78,7 +86,8 @@ object M2YCDTAccountRepository {
                 M2YCDTPersistUserInformation.password(newPassword)
             }
 
-    fun checkPassowrd(password: String) = M2YCDTAccountRemoteDataSource.checkPassword(PassRequest(password))
+    fun checkPassowrd(password: String) =
+        M2YCDTAccountRemoteDataSource.checkPassword(PassRequest(password))
 
     fun updatePhone(phone: String) = M2YCDTAccountRemoteDataSource.updatePhone(PhoneRequest(phone))
         .doOnSuccess {
@@ -123,16 +132,14 @@ object M2YCDTAccountRepository {
         return M2YCDTAccountRemoteDataSource.logout().onErrorResumeNext {
             Single.just(Any())
         }.doFinally {
-            M2YCDTPreferencesHelper.apply {
-                basicAuth = null
-                sessionCookie = null
-                userFingerprint = false
-            }
             M2YCDTPersistUserInformation.resetUser()
+            M2YCDTPreferencesHelper.clearSharedPref()
+            lastBalance = BalanceModel(null)
         }
     }
 
-    fun getAvailableMonths(accountId: String) = M2YCDTAccountRemoteDataSource.getAvailableMonths(accountId)
+    fun getAvailableMonths(accountId: String) =
+        M2YCDTAccountRemoteDataSource.getAvailableMonths(accountId)
 
 
 }
