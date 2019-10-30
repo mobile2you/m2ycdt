@@ -148,7 +148,7 @@ fun PaymentTicketResponse.toReceiptModel(): ReceiptModel {
     }
 
     val payment = ReceiptPaymentModel(
-        barCode, jsonObject?.name ?: "", jsonObject?.expiration
+        barCode ?: barCodeNumber, jsonObject?.name ?: "", jsonObject?.expiration
             ?: "", jsonObject?.paymentDate ?: "",
         jsonObject?.discount, jsonObject?.fine, jsonObject?.charges, jsonObject?.interest, cpfOrCnpj
             ?: "", date ?: "", amount, account?.toInt().toString()

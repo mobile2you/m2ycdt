@@ -18,6 +18,7 @@ class PaymentTicketResponse(var id: Int?,
                             var fine: Float?,
                             var charges: Float?,
                             var barCode: String?,
+                            var barCodeNumber: String?,
                             var dueDate: String,
                             var description: String?,
                             var status: String?) : Serializable {
@@ -55,7 +56,7 @@ class PaymentTicketResponse(var id: Int?,
 }
 
 fun PaymentTicketResponse.toPaymentModel(): PaymentModel {
-    return PaymentModel(valueWithCharges = amount, barcode = barCode,
+    return PaymentModel(valueWithCharges = amount, barcode = barCode ?: barCodeNumber,
             dueDate = dueDate.m2yCdtChangeDateFormat(M2YCDTConstants.CDT_TICKET_DATE_FORMAT, M2YCDTConstants.COMMON_DATE_FORMAT), password = null, cardId = null)
 }
 
