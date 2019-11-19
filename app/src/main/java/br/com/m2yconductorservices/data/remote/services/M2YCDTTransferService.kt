@@ -23,14 +23,14 @@ interface M2YCDTTransferService {
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}favoriteTransfer")
     fun favoriteTransfer(@Body request: FavoriteTransferRequest) : Single<Any>
 
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}editFavoriteTransfer")
+    fun editFavoriteTransfer(@Body request: EditFavoriteTransferRequest) : Single<Any>
+
+    @DELETE("${M2YCDTNetworkConstants.TRANSFER_URL}deleteFavoriteTransfer")
+    fun deleteFavoriteTransfer(@Body request: DeleteFavoriteTransferRequest) : Single<Any>
+
     @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}performBankTransfer")
     fun performBankTransfer(@Body transferRequest: TransferBankRequest): Single<TransferBankResponse>
-
-    @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}performP2PTransfer")
-    fun performP2PTransfer(@Body request: TransferRequest): Single<TransferResellerResponse>
-
-    @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}getp2pTransfer")
-    fun getp2pTransfer(@Body idAccount: AccountIdIntRequest?): Single<List<Transferp2pResponse>>
 
     @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}getBankTransfers")
     fun getBankTransfers(@Body idAccount: AccountIdIntRequest?): Single<List<VoucherBankResponse>>
