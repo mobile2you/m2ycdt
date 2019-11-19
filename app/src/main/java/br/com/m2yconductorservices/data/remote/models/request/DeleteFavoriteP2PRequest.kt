@@ -1,5 +1,5 @@
 package br.com.m2yconductorservices.data.remote.models.request
 
 data class DeleteFavoriteP2PRequest (
-    var placeholder: Int
+    val id: String
 )
