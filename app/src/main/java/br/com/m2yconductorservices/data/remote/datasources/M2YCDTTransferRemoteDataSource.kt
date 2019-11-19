@@ -14,12 +14,7 @@ object M2YCDTTransferRemoteDataSource {
     val service = M2YCDTServiceGenerator.createService(serviceClass = M2YCDTTransferService::class.java,
             interceptors = listOf(M2YCDTInterceptor()))
 
-
     fun performBankTransfer(transferRequest: TransferBankRequest) = service.performBankTransfer(transferRequest)
-
-    fun performP2PTransfer(request: TransferRequest) = service.performP2PTransfer(request)
-
-    fun getp2pTransfer(idAccount: AccountIdIntRequest?) = service.getp2pTransfer(idAccount)
 
     fun getBankTransfers(idAccount: AccountIdIntRequest?) = service.getBankTransfers(idAccount)
 
@@ -28,4 +23,8 @@ object M2YCDTTransferRemoteDataSource {
     fun getTransfersFavored() = service.getTransfersFavored()
 
     fun favoriteTransfer(request: FavoriteTransferRequest) = service.favoriteTransfer(request)
+    
+    fun editFavoriteTransfer(request: EditFavoriteTransferRequest) = service.editFavoriteTransfer(request)
+
+    fun deleteFavoriteTransfer(request: DeleteFavoriteTransferRequest) = service.deleteFavoriteTransfer(request)
 }

@@ -8,21 +8,6 @@ import io.reactivex.Single
 
 object M2YCDTTransferRepository {
 
-
-    fun performP2PTransfer(newTransfer: NewTransferModel): Single<ReceiptModel> {
-        return M2YCDTTransferRemoteDataSource.performP2PTransfer(
-            newTransfer.toRequest(
-                originalAccountId = try {
-                    M2YCDTAccountRepository.accountId.toLong()
-                } catch (e: Exception) {
-                    0L
-                }
-            )
-        ).map {
-            it.toReceiptModel()
-        }
-    }
-
     fun performBankTransfer(newTransfer: NewTransferModel): Single<ReceiptModel> {
         return M2YCDTTransferRemoteDataSource.performBankTransfer(
             newTransfer.toBankRequest(
@@ -35,18 +20,20 @@ object M2YCDTTransferRepository {
         ).map { it.toReceiptModel() }
     }
 
-    fun getp2pTransfer(idAccount: AccountIdIntRequest?) =
-        M2YCDTTransferRemoteDataSource.getp2pTransfer(idAccount)
-
     fun getBankTransfers(idAccount: AccountIdIntRequest?) =
         M2YCDTTransferRemoteDataSource.getBankTransfers(idAccount)
 
     fun favoriteTransfer(request: FavoriteTransferRequest) =
         M2YCDTTransferRemoteDataSource.favoriteTransfer(request)
 
+    fun editFavoriteTransfer(request: EditFavoriteTransferRequest) =
+        M2YCDTTransferRemoteDataSource.editFavoriteTransfer(request)
+
+    fun deleteFavoriteTransfer(request: DeleteFavoriteTransferRequest) =
+        M2YCDTTransferRemoteDataSource.deleteFavoriteTransfer(request)
+
     fun getTransfers() = M2YCDTTransferRemoteDataSource.getTransfers()
 
     fun getTransfersFavored() = M2YCDTTransferRemoteDataSource.getTransfersFavored()
-
-
+    
 }

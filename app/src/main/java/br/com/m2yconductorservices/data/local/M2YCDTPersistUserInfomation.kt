@@ -176,7 +176,7 @@ object M2YCDTPersistUserInformation {
             userLogin!!
         } else {
             if (!userCnpj.isNullOrBlank()) {
-                M2YCDTPreferencesHelper.userCnpj!!
+                userCnpj!!
             } else M2YCDTPreferencesHelper.userCpf ?: ""
         }
 
