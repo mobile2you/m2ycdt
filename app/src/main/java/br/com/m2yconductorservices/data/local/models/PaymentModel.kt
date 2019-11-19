@@ -137,7 +137,7 @@ fun BarcodeValidationResponse.toPaymentModel(): PaymentModel {
                     DataReturn.Result?.PaymentInfoNPC?.ComputedBillValues?.CalculatedInterestAmount,
                     DataReturn.Result?.PaymentInfoNPC?.ComputedBillValues?.CalculatedFineValue,
                     getCharges(),
-                    if (DataReturn?.Result?.ValidateBarCode?.HasDueDate == false)
+                    if (DataReturn.Result?.ValidateBarCode?.HasDueDate == false)
                         java.util.Calendar.getInstance().m2yCdtFormat(M2YCDTConstants.TICKET_DATE_FORMAT)
                     else
                         DataReturn.Result?.ValidateBarCode?.DueDate,

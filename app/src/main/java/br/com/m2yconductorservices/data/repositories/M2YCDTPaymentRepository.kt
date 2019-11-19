@@ -9,6 +9,7 @@ import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntReques
 import br.com.m2yconductorservices.data.remote.models.request.ValidateBarCodeRequest
 import br.com.m2yconductorservices.data.remote.models.request.toPaymentRequest
 import br.com.m2yconductorservices.data.remote.models.response.TicketPaymentResponse
+import br.com.m2yconductorservices.data.remote.models.response.TicketPaymentV1Response
 import br.com.m2yconductorservices.utils.extensions.m2yCdtChangeDateFormat
 import io.reactivex.Single
 

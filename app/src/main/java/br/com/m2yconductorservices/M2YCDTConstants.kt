@@ -33,4 +33,7 @@ object M2YCDTConstants {
     const val CDT_TICKET_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS"
     const val CDT_TICKET_RESALES_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     const val PAYMENT_DUEDATE = "dd/MM/yyyy'T'HH:mm:ss.SSS"
+
+    //Strings
+    const val PAYMENT_DESCRIPTION = "Pagamento solicitado pelo usuário"
 }

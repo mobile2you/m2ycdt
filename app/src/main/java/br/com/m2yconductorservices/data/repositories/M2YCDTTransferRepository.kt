@@ -3,6 +3,8 @@ package br.com.m2yconductorservices.data.repositories
 import br.com.m2yconductorservices.data.local.models.*
 import br.com.m2yconductorservices.data.remote.datasources.M2YCDTTransferRemoteDataSource
 import br.com.m2yconductorservices.data.remote.models.request.AccountIdIntRequest
+import br.com.m2yconductorservices.data.remote.models.request.DeleteFavoriteTransferRequest
+import br.com.m2yconductorservices.data.remote.models.request.EditFavoriteTransferRequest
 import br.com.m2yconductorservices.data.remote.models.request.FavoriteTransferRequest
 import io.reactivex.Single
 
