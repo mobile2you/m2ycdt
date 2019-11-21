@@ -6,3 +6,12 @@ data class FavoriteRechargeRequest(
         var mobile_carrier: String?,
         var nickname: String?
 )
+
+data class EditRechargeFavoredContactRequest (
+        val favorite_id: String,
+        var nickname: String?
+)
+
+data class DeleteRechargeFavoredContactRequest(
+        val favorite_id: String
+)

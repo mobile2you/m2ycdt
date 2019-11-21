@@ -12,3 +12,12 @@ data class FavoriteTransferRequest(
         var accountType: String,
         var cpfOrCnpj: String
 )
+
+data class EditFavoriteTransferRequest (
+        val favorite_id: String,
+        var nickname: String
+)
+
+data class DeleteFavoriteTransferRequest(
+        var favorite_id: String
+)

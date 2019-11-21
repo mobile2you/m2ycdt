@@ -6,3 +6,12 @@ data class P2PRequest (
         var account: String?,
         var nickname: String?
 )
+
+data class EditFavoriteP2PRequest (
+        val favorite_id: String,
+        var nickname: String?
+)
+
+data class DeleteFavoriteP2PRequest (
+        val favorite_id: String
+)

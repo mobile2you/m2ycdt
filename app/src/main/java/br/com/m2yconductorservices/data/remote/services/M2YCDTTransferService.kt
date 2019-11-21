@@ -18,7 +18,7 @@ interface M2YCDTTransferService {
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}favoriteTransfer")
     fun favoriteTransfer(@Body request: FavoriteTransferRequest) : Single<Any>
 
-    @PUT("${M2YCDTNetworkConstants.TRANSFER_URL}editFavoriteTransfer")
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}editFavoriteTransfer")
     fun editFavoriteTransfer(@Body request: EditFavoriteTransferRequest) : Single<Any>
 
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}deleteFavoriteTransfer")
