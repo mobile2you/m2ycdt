@@ -14,10 +14,10 @@ data class FavoriteTransferRequest(
 )
 
 data class EditFavoriteTransferRequest (
-        val favorite_id: String,
+        val id: String,
         var nickname: String
 )
 
 data class DeleteFavoriteTransferRequest(
-        var favorite_id: String
+        var id: String
 )

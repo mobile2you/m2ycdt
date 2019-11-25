@@ -8,10 +8,10 @@ data class P2PRequest (
 )
 
 data class EditFavoriteP2PRequest (
-        val favorite_id: String,
+        val id: String,
         var nickname: String?
 )
 
 data class DeleteFavoriteP2PRequest (
-        val favorite_id: String
+        val id: String
 )

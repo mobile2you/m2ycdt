@@ -8,10 +8,10 @@ data class FavoriteRechargeRequest(
 )
 
 data class EditRechargeFavoredContactRequest (
-        val favorite_id: String,
+        val id: String,
         var nickname: String?
 )
 
 data class DeleteRechargeFavoredContactRequest(
-        val favorite_id: String
+        val id: String
 )

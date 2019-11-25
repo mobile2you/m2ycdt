@@ -11,10 +11,10 @@ data class TransportFavored (
 ) : Serializable
 
 data class DeleteTransportFavoriteRequest (
-    val favorite_id: String
+    val id: String
 )
 
 data class EditTransportFavoriteRequest (
-    val favorite_id: String,
+    val id: String,
     val name: String
 )
