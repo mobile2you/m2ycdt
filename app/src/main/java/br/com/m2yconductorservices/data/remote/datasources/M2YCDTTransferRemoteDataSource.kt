@@ -21,7 +21,7 @@ object M2YCDTTransferRemoteDataSource {
 
     fun favoriteTransfer(request: FavoriteTransferRequest) = service.favoriteTransfer(request)
     
-    fun editFavoriteTransfer(request: EditFavoriteTransferRequest) = service.editFavoriteTransfer(request)
+    fun editBankFavorite(request: EditFavoriteTransferRequest) = service.editBankFavorite(request)
 
-    fun deleteFavoriteTransfer(request: DeleteFavoriteTransferRequest) = service.deleteFavoriteTransfer(request)
+    fun deleteBankFavorite(request: DeleteFavoriteTransferRequest) = service.deleteBankFavorite(request)
 }

@@ -28,11 +28,11 @@ object M2YCDTTransferRepository {
     fun favoriteTransfer(request: FavoriteTransferRequest) =
         M2YCDTTransferRemoteDataSource.favoriteTransfer(request)
 
-    fun editFavoriteTransfer(request: EditFavoriteTransferRequest) =
-        M2YCDTTransferRemoteDataSource.editFavoriteTransfer(request)
+    fun editBankFavorite(request: EditFavoriteTransferRequest) =
+        M2YCDTTransferRemoteDataSource.editBankFavorite(request)
 
-    fun deleteFavoriteTransfer(request: DeleteFavoriteTransferRequest) =
-        M2YCDTTransferRemoteDataSource.deleteFavoriteTransfer(request)
+    fun deleteBankFavorite(request: DeleteFavoriteTransferRequest) =
+        M2YCDTTransferRemoteDataSource.deleteBankFavorite(request)
 
     fun getTransfers() = M2YCDTTransferRemoteDataSource.getTransfers()
 

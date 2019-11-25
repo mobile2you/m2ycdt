@@ -18,11 +18,11 @@ interface M2YCDTTransferService {
     @POST("${M2YCDTNetworkConstants.TRANSFER_URL}favoriteTransfer")
     fun favoriteTransfer(@Body request: FavoriteTransferRequest) : Single<Any>
 
-    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}editTransferFavorite")
-    fun editFavoriteTransfer(@Body request: EditFavoriteTransferRequest) : Single<Any>
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}editBankFavorite")
+    fun editBankFavorite(@Body request: EditFavoriteTransferRequest) : Single<Any>
 
-    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}deleteTransferFavorite")
-    fun deleteFavoriteTransfer(@Body request: DeleteFavoriteTransferRequest) : Single<Any>
+    @POST("${M2YCDTNetworkConstants.TRANSFER_URL}deleteBankFavorite")
+    fun deleteBankFavorite(@Body request: DeleteFavoriteTransferRequest) : Single<Any>
 
     @POST("${M2YCDTNetworkConstants.CDT_TRANSFER_URL}performBankTransfer")
     fun performBankTransfer(@Body transferRequest: TransferBankRequest): Single<TransferBankResponse>
